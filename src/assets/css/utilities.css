@@ -1,0 +1,51 @@
+/* height */
+
+.min-vh-75 {
+    min-height: 75dvh;
+}
+
+.min-vh-50 {
+    min-height: 50dvh;
+}
+
+.min-vh-25 {
+    min-height: 25dvh;
+}
+
+.min-vh-500 {
+    min-height: 500px;
+}
+
+/* text */
+
+.font-windsong {
+    font-family: 'WindSong', cursive, 'Helvetica Neue';
+    /* font-weight: 500;  */
+    line-height: 79%;
+}
+
+/* text-wrap */
+
+.text-balance {
+    text-wrap: balance;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+
+.font-inter {
+    font-family: 'Inter Tight', Helvetica, Arial, sans-serif;
+
+}
+/* position */
+
+.z-0 {
+    z-index: 0;
+}
+
+/* images */
+
+.object-fit {
+    object-fit: cover;
+}

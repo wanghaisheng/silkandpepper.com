@@ -1,0 +1,299 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/sitecontent.json';
+import { getCollection } from "astro:content";
+const newsPosts = await getCollection("news");
+const reviewsPosts = await getCollection("reviews");
+const guidesPosts = await getCollection("guides");
+import functions from '../js/functions.js';
+
+function filterPost(arr) {
+	return arr.filter(item => item.data.draft === false);
+}
+
+const { index } = Astro.props
+const slideAnim = {
+  old: {
+    name: 'slideDown',
+    duration: '0.5s',
+    easing: 'ease',
+    fillMode: 'backwards',
+  },
+  new: {
+    name: 'slideUp',
+    duration: '0.5s',
+    delay: `${index * 0.2 + 0.1}s`,
+    easing: 'ease',
+    fillMode: 'backwards',
+  },
+}
+const verticalSlide = {
+  forwards: slideAnim,
+  backwards: slideAnim,
+}
+---
+<Layout title="Welcome to Prince Collection" description="Prince Collection" image="/images/video/pc-social-banner.jpeg">
+		<div class="container-fluid px-0 pt-3 bg-gold-2" data-aos="fade">
+			<div class="row min-vh-100 text-light rounded-4">
+				<div class="col-lg-10 offset-lg-1 d-flex flex-column justify-content-center align-items-center text-center text-dark p-5 min-vh-500">
+					<img class="logo mb-4 pb-2 pb-lg-0 animate-in" style="width: 200px;" src="/images/logos/pc-logo-black-min-trans.png" alt="Prince collection logo" />					
+					<h1 class="mb-5 mt-0 font-windsong text-secondary animate-in" style="font-size: 13vmin;">{data.home.hero.title}</h1>
+					<nav class="nav nav-fill d-flex mx-auto animate-in">
+						<a class="nav-link p-0 me-2" href="/book">
+							<button class="btn btn-light text-pc-dark bg-pc-10 rounded-pill fw-bold px-4 slideIn">{data.home.hero.button1}</button>
+						</a>
+						<a class="nav-link p-0 me-2" href="/about">
+							<button class="btn btn-light text-pc-dark bg-pc-10 rounded-pill fw-bold px-4 slideIn">{data.home.hero.button2}</button>
+						</a>
+					</nav>
+				</div>
+				<div class="col-lg-12 p-0 position-relative animate-in bg-pc-60">
+					<button id="playButton" class="btn btn-link position-absolute top-0 start-25 m-3" style="z-index: 100">
+						<i id="playIcon" class="bi bi-play-circle text-pc" style="font-size: 90px; filter:drop-shadow(2px 2px 5px #222222); transition: all 0.3s ease-in-out"></i>
+					</button>
+					<video id="heroVideo" preload="none" class="w-100 object-fit position-relative bottom-0 start-0 z-1" style="height: 700px; background: url('/images/video/pc-video-placeholder.jpeg') center; background-size: cover; aspect-ratio: 16/9" width="100%" height="600" muted loop>
+						<source id="videoSource" type="video/mp4">
+					  	Your browser does not support the video tag. Please update your browser or try Chrome, Firefox, or Safari.
+					</video>
+				</div>
+			</div>
+
+			<!-- get more -->
+
+			<div class="row py-5 bg-pc-60 m-0" data-aos="fade-up">
+				<div class="col-lg-8 offset-lg-2 d-flex flex-column justify-content-center align-items-center text-center text-body-secondary p-5">
+					<span class="badge rounded-pill fw-bold bg-pc-dark text-pc-10 py-2 px-3" data-aos="fade-up">{data.home.intro.badge}</span>
+					<h2 class="display-4 fw-bold lh-1 mb-2 mt-3" data-aos="fade-up" data-aos-delay="200"><Fragment set:html={data.home.intro.title}/></h2>
+					<p class="fs-5" data-aos="fade-up" data-aos-delay="400">{data.home.intro.content}</p>
+					<a href="/concierge" data-aos="fade-up" data-aos-delay="600">
+						<button class="btn bg-pc-dark text-light fw-bold rounded-pill px-4 shadow">{data.home.intro.button}</button>
+					</a>
+				</div>
+			</div>
+
+			<!-- partner logos -->
+
+			<div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 p-5 bg-pc-light" data-aos="fade-up">
+				{
+					data.home.logos1.map((item, index) => (
+					<div class="col d-flex my-auto text-center p-3" style="filter: brightness(0);">
+						<img src="" width="120px" height="auto" data-src={item.url} style={index === 0 || index === 2 ? 'width: 120px;' : 'width: 140px'} alt={item.alt} />
+					</div>
+				))}
+			</div>
+
+			<!-- News articles -->
+
+			<div class="row py-5">
+				<div class="col-lg-8 offset-lg-2 d-flex flex-column justify-content-center align-items-center text-center text-body-secondary px-5">
+					<span class="badge rounded-pill fw-bold bg-pc-dark text-pc-10 py-2 px-3" data-aos="fade-up">{data.home.news.badge}</span>
+					<h2 class="display-4 fw-bold lh-1 mb-2 mt-3" data-aos="fade-up" data-aos-delay="200">{data.home.news.title}</h2>
+					<p class="fs-5 col-lg-8 text-balance mb-0" data-aos="fade-up" data-aos-delay="400">{data.home.news.content}</p>
+				</div>
+				</div>
+				<div class="row g-4 px-4 px-lg-5">
+					{ 
+					filterPost(newsPosts).slice(0,3).map((item, index) => (
+					<div class:list={[index === 2 ? 'col-md-12 col-lg-4' : 'col-md-6 col-lg-4']} data-aos="fade-up" data-aos-delay={index * 100}>
+						<a href={`/news/${item.slug}/`}>
+							<div class="card mb-3 rounded-5 bg-pc-light border-0 shadow" style="min-height: 500px;">
+								<img src="" data-src={item.data.imageUrl} class="card-img-top w-100 object-fit rounded-top-5" style="height: 250px;" alt="..." />
+								<div class="card-body p-4">
+									<p class="small mb-2 mt-0">{item.data.pubDate.toString().slice(0,10)}</p>
+									<h5 class="card-title fs-4 fw-900 text-secondary">{item.data.title}</h5>
+									<p class="card-text my-3">{functions.shorten(item.data.description, 150) + '...'}</p>
+									<p class="small m-0 text-secondary mt-2 mb-0">By: {item.data.author}</p>
+									<i class="bi bi-arrow-up-right-circle-fill text-secondary fs-1 position-absolute bottom-0 end-0 m-3"></i>
+								</div>
+							</div>
+						</a>
+					</div>
+					))}
+				</div>
+
+			<!--book -->
+
+			<div class="row p-5">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<span class="badge rounded-pill fw-bold bg-pc-60 text-pc-dark py-2 px-3" data-aos="fade-up">{data.home.book.badge}</span>
+					<h2 class="display-4 fw-900 lh-1 my-3" data-aos="fade-up" data-aos-delay="200">{data.home.book.title}</h2>
+					<p class="fs-5 col-lg-8 offset-lg-2" data-aos="fade-up" data-aos-delay="400"><Fragment set:html={data.home.book.content}/></p>
+				</div>
+			</div>
+			
+			<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 text-body-secondary px-4 px-lg-5 pb-5">
+				{data.home.book.list.map((item, index) => (
+					<div class="col text-black-50" data-aos="fade-up" data-aos-delay={index * 100}>
+						<div class="p-5 rounded-4 bg-pc-20 shadow" style="min-height: 420px">
+							<i class:list={["bi text-pc-dark fs-1 px-3 py-2 shadow rounded-3 bg-pc-80", item.icon]}></i>
+							<h4 class="fw-bold mb-3 mt-4 pt-1">{item.title}</h4>
+							<p class="fs-5">{item.content}</p>
+						</div>
+					</div>
+				))}
+			</div>
+
+			<div class="row p-5">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<span class="badge rounded-pill fw-bold text-pc-dark bg-pc-60 py-2 px-3" data-aos="fade-up">{data.home.exclusive.badge}</span>
+					<h2 class="display-4 fw-900 lh-1 my-3" data-aos="fade-up" data-aos-delay="200"><Fragment set:html={data.home.exclusive.title}/></h2>
+					<p class="fs-5 col-lg-10 offset-lg-1" data-aos="fade-up" data-aos-delay="400">{data.home.exclusive.content}</p>
+					<a href="/book">
+						<button class="btn btn-pc fw-bold rounded-pill px-4 shadow" data-aos="fade-up" data-aos-delay="600">{data.home.exclusive.button}</button>
+					</a>
+				</div>
+			</div>
+
+			<div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 p-5 bg-pc-10 g-4 mt-0 mt-lg-3" data-aos="fade-up">
+				{
+					data.home.logos2.map((item, index) => (
+					<div class="col d-flex my-auto text-center p-3" style="filter: brightness(0);">
+						<img src="" data-src={item.url} style={index === 0 || index === 1 || index === 4 ? 'width: 140px;' : 'width: 120px'} alt={item.alt} />
+					</div>
+				))}
+			</div>
+
+			<div class="p-4"></div>
+
+			<div class="row px-4 px-lg-5">
+				<div class="col-lg-12 col-xl-3">
+					<div class="d-flex flex-column justify-content-center align-items-start bg-pc-dark-80 h-100 min-vh-50 rounded-5 p-5">
+					<span class="badge rounded-pill fw-bold bg-pc-60 text-pc-dark py-2 px-3 mb-3">{data.home.reviews.badge}</span>
+					<h3 class="fw-bold text-pc-60 fs-1 lh-1">{data.home.reviews.title}</h3>
+					<p class="py-1 text-pc-light">{data.home.reviews.content}</p>
+					<a href="/reviews">
+						<button class="btn btn-sm btn-pc rounded-pill fw-bold px-3 text-pc-light">See more</button>
+					</a>
+					</div>
+				</div>
+				<div class="col-lg-12 col-xl-9">
+					<div class="row g-3 py-3 py-xl-0">
+					{reviewsPosts.slice(0,3).map((post, index) => (
+						<div class:list={[index === 2 ? 'col-md-12 col-lg-4' : 'col-md-6 col-lg-4']} data-aos="fade-up" data-aos-delay={index * 200}>
+							<a href={`/reviews/${post.slug}/`}>
+								<div class="card rounded-5 bg-pc-dark border-0 shadow">
+									<img src="" data-src={post.data.imageUrl} class="card-img-top position-absolute top-0 start-0 z-0 w-100 h-100 object-fit rounded-5 p-3" style="filter: brightness(0.4)" alt="..." />
+									<div class="card-img-overlay position-relative">
+										<div class="card-body min-vh-500 text-light d-flex flex-column justify-content-end align-items-start p-4">
+											<p class="small mb-2 mt-0">{post.data.pubDate.toString().slice(0,10)}</p>
+											<h5 class="card-title fs-4 fw-900">{post.data.title}</h5>
+											<p class="card-text my-3">{post.data.description}</p>
+											<i class="bi bi-arrow-up-right-circle-fill text-pc-light fs-1 position-absolute top-0 end-0 me-2 mt-1 p-3"></i>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					))}
+					</div>
+				</div>
+			</div>
+
+			<div class="py-0 py-lg-4"></div>
+
+			<div class="row px-4 px-lg-5">
+				<div class="col-lg-6 p-5">
+					<span class="badge rounded-pill fw-bold bg-pc-60 text-pc-dark py-2 px-3 mb-3" data-aos="fade-up">{data.home.concierge.badge}</span>
+					<h3 class="fw-bold display-4 lh-1" data-aos="fade-up" data-aos-delay="200">{data.home.concierge.title}</h3>
+					<p class="fs-5 py-1" data-aos="fade-up" data-aos-delay="400">{data.home.concierge.content}</p>
+					<a href="/concierge">
+						<button class="btn btn-pc rounded-pill px-4 fw-bold shadow" data-aos="fade-up" data-aos-delay="600">{data.home.concierge.button}</button>
+					</a>
+				</div>
+				<div class="col-lg-6" data-aos="fade-up" data-aos-delay="800">
+					<img class="w-100 h-100 rounded-4 object-fit" src="" data-src="/images/general/pc-chairs-white-balcony-ocean.avif" alt="Prince Collection Concierge" />
+				</div>
+			</div>
+
+			<div class="row p-4 p-lg-5">
+				<div class="col-lg-12 col-xl-3 order-2 order-xl-1">
+					<div class="d-flex flex-column justify-content-center align-items-start bg-pale-dogwood text-body-secondary h-100 min-vh-50 rounded-5 p-5 shadow">
+					<span class="badge rounded-pill fw-bold bg-pc-dark text-pc-light py-2 px-3 mb-3">{data.home.guides.badge}</span>
+					<h3 class="fw-bold fs-1 lh-1">{data.home.guides.title}</h3>
+					<p class="py-1">{data.home.guides.content}</p>
+					<a href="/guides">
+						<button class="btn btn-sm btn-light border-0 bg-pc-dark rounded-pill fw-bold px-3 text-pc-light">{data.home.guides.button}</button>
+					</a>
+					</div>
+				</div>
+				<div class="col-lg-12 col-xl-9 order-2 order-xl-1">
+					<div class="row g-3 py-3 py-xl-0">
+						{
+						filterPost(guidesPosts).slice(0,3).map((item, index) => (
+						<div class:list={[index === 2 ? 'col-md-12 col-lg-4' : 'col-md-6 col-lg-4']} data-aos="fade-up" data-aos-delay={index * 200}>
+							<a href={`/guides/${item.slug}/`}>
+								<div class="card rounded-5 bg-pale-dogwood border-0 shadow position-relative">
+									<img src="" data-src={item.data.imageUrl} class="card-img-top position-absolute top-0 start-0 z-0 w-100 h-100 object-fit rounded-5 p-3" style="filter: brightness(0.4)" alt="..." />
+									<div class="card-img-overlay position-relative">
+									<div class="card-body min-vh-500 text-light d-flex flex-column justify-content-end align-items-start p-4">
+										<p class="small mb-2 mt-0">{item.data.pubDate.toString().slice(0,10)}</p>
+										<h5 class="card-title fs-4 fw-900">{item.data.title}</h5>
+										<p class="card-text my-3">{item.data.description}</p>
+										<i class="bi bi-arrow-up-right-circle-fill text-pc-light fs-1 position-absolute top-0 end-0 me-2 mt-1 p-3"></i>
+									</div>
+									</div>
+								</div>
+								</a>
+							</div>
+							))}
+					</div>
+				</div>
+			</div>
+
+			<div class="row bg-pc-80 py-5 text-body-secondary" data-aos="fade-up">
+				<div class="col-lg-8 offset-lg-2 p-5 text-center">
+					<span class="badge rounded-pill fw-bold bg-pc-dark text-pc-light py-2 px-3" data-aos="fade-up">{data.home.newsletter_cta.badge}</span>
+					<h2 class="display-4 fw-bold lh-1" data-aos="fade-up" data-aos-delay="200"><Fragment set:html={data.home.newsletter_cta.title}/></h2>
+					<p class="fs-5 my-3 col-md-8 mx-auto" data-aos="fade-up" data-aos-delay="400">{data.home.newsletter_cta.content}</p>
+					<a href="/newsletter">
+						<button class="btn bg-pc-dark text-light rounded-pill px-4 shadow" data-aos="fade-up" data-aos-delay="600">{data.home.newsletter_cta.button}</button>
+					</a>
+				</div>
+			</div>
+		</div><!--end container -->
+</Layout>
+
+<script>
+	// https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play
+	// astro reinit script in SPA mode w/ astro:page-load => didn't work
+
+	let videoElem = document.getElementById("heroVideo");
+	const playIcon = document.getElementById("playIcon");
+	const playButton = document.getElementById("playButton");
+
+	let videoLoaded = false;
+
+	function sayHello() {
+		var video = document.getElementById('heroVideo');
+		var source = document.getElementById('videoSource');
+		source.src = "/images/video/pc-hero-video-min.mp4"; // Update the video source
+		video.load(); // Load the video
+		video.play(); 
+		videoLoaded = true;
+	}
+
+	function loadVideoOnce() {
+		if (!videoLoaded) sayHello();
+	}
+
+	[videoElem, playButton].forEach(item => {
+		item.addEventListener("click", loadVideoOnce, false);
+		// item.addEventListener("click", detectPlay, false);
+	});
+
+	videoElem.addEventListener("playing", () => {
+		playIcon.classList.remove("bi-play-circle");
+		playIcon.classList.add("opacity-25", "bi-pause-circle");
+		[videoElem, playButton].forEach(item => {
+			item.addEventListener("click", () => { videoElem.pause()});
+		})
+	});
+	videoElem.addEventListener("pause", () => {
+		playIcon.classList.remove("opacity-25", "bi-pause-circle");
+		playIcon.classList.add("bi-play-circle");
+		[videoElem, playButton].forEach(item => {
+			item.addEventListener("click", () => { videoElem.play()});
+		})
+	});
+
+</script>

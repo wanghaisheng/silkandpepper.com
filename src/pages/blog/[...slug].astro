@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
+
+export const prerender = true;
+export async function getStaticPaths() {
+  const newsEntries = await getCollection('blog');
+  return newsEntries.map(post => ({
+    params: { slug: post.slug }, props: { post },
+  }));
+}
+
+const allPosts = await getCollection("blog");
+const [, ...sidebarPosts] = allPosts;
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title} description={post.data.description} image={post.data.imageUrl}>
+    <div class="container-fluid px-0 pt-3">
+        <div class="row min-vh-500 pt-5">
+            <div class="col-lg-8 offset-lg-2 d-flex flex-column justify-content-center align-items-center text-center p-5">
+                   <!-- tags -->
+                <div class="d-flex justify-content center-align-items-center">
+                    {
+                        post.data.tags.map((tag) =>(
+                        <span class="badge bg-pc-dark me-1 my-2">{tag}</span>
+                        ))
+                    }
+                </div>
+                <h1 class="display-4 fw-900 text-uppercase text-body-secondary lh-1 mb-3 mt-2">{post.data.title}</h1>
+                <p class="fs-5 col-md-7 text-body-secondary mx-auto mb-3 mt-0">{post.data.description}</p>
+                <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">Written by</span> {post.data.author}</p>
+                <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">On</span> {post.data.pubDate.toString().slice(0,10)}</p>
+            </div>
+
+            { post.data.carousel == '' ?
+         
+            <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center pt-5 pe-5">
+                <img class="w-100 object-fit rounded-end-5 shadow" style="height: 500px" src={post.data.imageUrl} alt={post.data.imageAlt} />
+            </div>
+            :
+            <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center pt-5">
+                <div id="carouselExampleIndicators" class="carousel slide"  data-bs-ride="true">
+                    <div class="carousel-indicators">
+                        {post.data.carousel.map((item, index) => (
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={index} class={index === 0 ? 'active' : ''} aria-current="true" aria-label={'Slide ' + index+1}>
+                            <i class="bi bi-dot fs-1"></i>
+                            </button>
+                        ))}
+                    </div>
+                    <div class="carousel-inner object-fit h-100">
+                    {post.data.carousel.map((item, index) => (
+                        <div style="height: 600px"
+                        class:list={["carousel-item min-vw-100", index === 0 ? 'active' : '']}>
+                            <img src={item.url} class="d-block w-100 h-100 object-fit" alt={item.alt}>
+                      </div>
+                    ))}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <i class="bi bi-arrow-left-circle-fill display-2 opacity-100"  aria-hidden="true"></i>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <i class="bi bi-arrow-right-circle-fill display-1 text-pc-light" aria-hidden="true"></i>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            </div><!--end carousel -->
+        }
+
+
+        </div>
+    </div>
+    <!-- body -->
+    <div class="container w-100 mx-auto">
+        <div id="content" class="row p-4">
+            <!-- sidebar -->
+            <div class="d-none d-xl-flex flex-column col-lg-2 col-lg-3 pt-5">
+                <p><span class="fw-bold text-pc-dark">Prince Collection</span> is a non-traditional, full service travel concierge designed exclusively for companies and individuals who require exclusive travel arrangements. We handle the nuances of travel ensuring a seamless and extraordinary journey from start to finish.</p>
+                <hr>
+                <div class="my-3">
+                    <h4 class="fs-5 fw-bold text-pc-dark">Newsletter</h4>
+                    <p>Join the Prince Collection newsletter to get weekly updates delivered straight to your inbox.</p>
+                    <NewsletterForm newsletterBtn="btn-pc" />
+                </div>
+                <hr>
+                <div class="my-3">
+                    <h4 class="fs-5 fw-bold text-pc-dark">Book your travel</h4>
+                    <p>Let Prince Collection’s Travel Concierge handle your exclusive travel arrangements. Get started by filling out some basic info about your trip.</p>
+                    <a href="/book">
+                        <button class="btn btn-pc">Book now</button>
+                    </a>
+                </div>
+                <hr>
+                <h2 class="text-secondary mt-1">More posts</h2>
+                {
+                    sidebarPosts.map((post) => (
+                    <a href={`/blog/${post.slug}/`}>
+                        <div class="card text-body-secondary rounded-4 mb-3">
+                            <img src={post.data.imageUrl} class="card-img-top rounded-4 p-2" style="width: 100%; height: 150px; object-fit: cover" alt={post.data.imageAlt}>
+                            <div class="card-body px-4 pb-4 pt-0">
+                                <p class="small text-uppercase fw-light mb-2">{post.data.pubDate.toString().slice(0,10)}</p>
+                                <h5 class="fs-5 card-title fw-bold">{post.data.title}</h5>
+                                <p class="card-text mt-2">{post.data.description}</p>
+                                <button class="btn btn-pc btn-sm px-4 rounded-3">Read</button>
+                            </div>
+                        </div>
+                    </a>
+                    ))
+                }
+            </div>
+
+            <div class="content-body col-lg-12 col-xl-9 p-4 p-lg-5">
+                <!--add: in this post: user adds all the post's titles as an array,
+                    then I make a ul loop of links here-->
+                <Content />
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                {post.data.gallery.map((item, index) => (
+                    <div class="col">
+                        <img src={item.url} alt={item.alt} data-bs-target={'#item_' + index} data-bs-toggle="modal">    
+                    </div>
+                ))}
+                </div>
+<!--
+                    {
+                        post.data.gallery.map((item, index) => (
+                        <div class="modal fade" id={'item_' + index} aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src={item.url} alt={item.alt}>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" data-bs-target={'#' + index} data-bs-toggle="modal">Back to first</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                ))}
+            </div>
+            -->
+
+            <!--sidebar responsive-->
+            
+            <div class="col-lg-12 d-block d-xl-none border-top p-4">
+                <div class="py-2">
+                <p><span class="fw-bold text-pc-dark">Prince Collection</span> is a non-traditional, full service travel concierge designed exclusively for companies and individuals who require exclusive travel arrangements. We handle the nuances of travel ensuring a seamless and extraordinary journey from start to finish.</p>
+                </div>
+                <hr>
+                <div class="py-2">
+                    <h4 class="fs-5 fw-bold text-pc-dark">Newsletter</h4>
+                    <p>Join the Prince Collection newsletter to get weekly updates delivered straight to your inbox.</p>
+                    <NewsletterForm newsletterBtn="btn-pc" />
+                </div>
+                <hr>
+                <div class="py-2">
+                    <h4 class="fs-5 fw-bold text-pc-dark">Book your travel</h4>
+                    <p>Let Prince Collection’s Travel Concierge handle your exclusive travel arrangements. Get started by filling out some basic info about your trip.</p>
+                    <a href="/book">
+                        <button class="btn btn-pc">Book now</button>
+                    </a>
+                </div>
+                <hr>
+                <div class="container-fluid">
+                    <h2 class="text-secondary">More posts</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 px-0 py-2">
+                        {
+                            sidebarPosts.map((post) => (
+                            <a href={`/blog/${post.slug}/`}>
+                                <div class="col">
+                                <div class="card text-body-secondary bg-light rounded-4 mb-2" style="min-height: 450px">
+                                    <img src={post.data.imageUrl} class="card-img-top rounded-4 p-2" style="width: 100%; height: 150px; object-fit: cover" alt={post.data.imageAlt}>
+                                    <div class="card-body px-4 pb-4 pt-0">
+                                        <p class="small text-uppercase fw-light mb-2">{post.data.pubDate.toString().slice(0,10)}</p>
+                                        <h5 class="fs-5 card-title fw-bold">{post.data.title}</h5>
+                                        <p class="card-text mt-2">{post.data.description}</p>
+                                        <button class="btn btn-pc btn-sm px-4 rounded-3">Read</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </a>
+                            ))
+                        }
+                    </div>
+                </div>
+        </div>
+    </div>
+</Layout>

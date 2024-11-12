@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Ivy Mode';
+    src: local('Ivy Mode Regular'), local('Ivy-Mode-Regular'),
+        url('fonts/IvyMode-Regular/IvyMode-Regular.woff2') format('woff2'),
+        url('fonts/IvyMode-Regular/IvyMode-Regular.woff') format('woff'),
+        url('fonts/IvyMode-Regular/IvyMode-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Ivy Mode';
+    src: local('Ivy Mode Bold'), local('Ivy-Mode-Bold'),
+        url('/fonts/IvyMode-Bold/IvyMode-Bold.woff2') format('woff2'),
+        url('/fonts/IvyMode-Bold/IvyMode-Bold.woff') format('woff'),
+        url('/fonts/IvyMode-Bold/IvyMode-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Ivy Mode';
+    src: local('Ivy Mode Semi Bold'), local('Ivy-Mode-Semi-Bold'),
+        url('/fonts/IvyMode-SemiBold/IvyMode-SemiBold.woff2') format('woff2'),
+        url('/fonts/IvyMode-SemiBold/IvyMode-SemiBold.woff') format('woff'),
+        url('/fonts/IvyMode-SemiBold/IvyMode-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  

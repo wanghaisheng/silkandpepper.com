@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+// const allPosts = await Astro.glob('../../pages/blog/*.md');
+const allPosts = await getCollection("news");
+// astro.glob => getCollection is the difference between getting all files from a directory in pages vs. collections
+// https://docs.astro.build/en/tutorials/add-content-collections/
+import functions from '../../js/functions.js';
+
+
+const { index } = Astro.props
+const slideAnim = {
+  old: {
+    name: 'slideDown',
+    duration: '0.5s',
+    easing: 'ease-out',
+    fillMode: 'backwards',
+  },
+  new: {
+    name: 'slideUp',
+    duration: '0.5s',
+    delay: `${index * 0.2 + 0.1}s`,
+    easing: 'ease-out',
+    fillMode: 'backwards',
+  },
+}
+const verticalSlide = {
+  forwards: slideAnim,
+  backwards: slideAnim,
+}
+
+// reduce length of post description to closest full word
+// function shorten(text, max) {
+//   return text && text.length > max ? text.slice(0, max).split(' ').slice(0, -1).join(' ') : text
+// }
+
+let filteredPosts = allPosts.filter(post => post.data.draft === false)
+filteredPosts.sort((a, b) => b.data.pubDate - a.data.pubDate);
+const [firstArticle, ...allArticles] = filteredPosts;
+---
+
+<Layout title="Prince Collection | News" description="Prince Collection's latest news, deals, and happenings in the travel space." image={firstArticle.data.imageUrl}>
+	<div class="container-fluid px-0">
+		<div class="row min-vh-100 bg-dutch-white">
+			<div class="col-lg-6 d-flex flex-column justify-content-center align-items-center min-vh-500 text-center p-5 mt-5 mt-lg-0 animate-in">
+				<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-pc-10 py-2 px-4">News</span>
+				<h1 class="col-lg-10 font-windsong text-pc-dark-80 fw-900 mb-2 my-4 pt-2" style="font-size: 10vmin;">{firstArticle.data.title}</h1>
+				<p class="col-md-8 fs-5 text-body-secondary mt-0 mb-2">{functions.shorten(firstArticle.data.description, 150) + '...'}</p>
+				<div class="py-2">
+					<p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">Written by</span> {firstArticle.data.author}</p>
+					<p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">On</span> {firstArticle.data.pubDate.toString().slice(0,10)}</p>
+				</div>
+				<a href={`/news/${firstArticle.slug}/`}>
+					<button class="btn btn-dark fw-bold rounded-pill px-4 mt-3 shadow">Read article</button>
+				</a>
+			</div>
+			<div class="col-lg-6">
+				<img src={firstArticle.data.imageUrl} class="w-100 h-100" style="object-fit: cover;" alt={firstArticle.data.imageAlt}>
+			</div>
+		</div>
+		
+		<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 p-4">
+			{allArticles.map((post) => (
+			!post.data.draft &&
+			<div class="col">
+				<a href={`/news/${post.slug}/`}>
+					<div class="card bg-pc-light rounded-4 p-0 border-0 shadow" style="min-height: 500px">
+						<img src="" data-src={post.data.imageUrl} class="card-img-top rounded-top-4 w-100" style="object-fit: cover; height: 200px; filter: brightness(70%)" alt={post.data.imageAlt}>
+						<i class="bi bi-arrow-up-right-circle-fill text-pc-10 fs-1 position-absolute top-0 end-0 me-3 mt-2"></i>
+						<div class="card-body position-relative px-4 pb-4">
+							<p class="small mb-2">{post.data.pubDate.toString().slice(0,10)}</p>
+							<h5 class="card-title fw-bold mb-0">{post.data.title}</h5>
+							<p class="small m-0 text-secondary mt-2 mb-0">By: {post.data.author}</p>
+							<p class="card-text text-body-secondary pe-4">{functions.shorten(post.data.description, 150) + '...'}</p>
+						</div>
+						<div class="card-footer p-3">
+							<div class="d-flex flex-row flex-wrap" style="text-wrap: pretty;">
+							{post.data.tags.map((tag) => (
+								<p class="small text-pc-dark-80 me-1 my-0">#{tag}</p>
+							))}
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		))}
+    </div>
+</Layout>
+        
+<!-- <div class="grid" style="--col: 1fr 1fr 2fr; --row: auto;"></div>
+<div class="grid" style="--col: 3fr 1fr; --row:auto;"></div> -->
+<style>
+.grid {
+  display: grid;
+  /* grid-template-columns: var(--col);
+  grid-template-rows: var(--row); */
+  /* grid-template-columns: 300px 1fr 2fr; */
+  gap: 15px;
+}
+.grid-1 {
+   display: grid;
+   grid-template-columns: 1fr 1fr 2fr;
+   grid-template-rows: auto;
+}
+.grid-2 {
+   display: grid;
+   grid-template-columns: 3fr, 1fr;
+   grid-template-rows: auto;
+}
+</style>

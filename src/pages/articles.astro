@@ -1,0 +1,69 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+const newsPosts = await getCollection("news");
+const reviewsPosts = await getCollection("reviews");
+const guidesPosts = await getCollection("guides");
+
+const allPosts = newsPosts.concat(reviewsPosts, guidesPosts);
+console.log(allPosts); // [1, 2, "x", "y", true, false];
+
+// const filterGuides = await getCollection('guides', ({ data }) => {
+//   return collection === "guides";
+// });
+---
+
+
+<Layout title="Prince Collection | Articles" description="Explore the Prince Collection content library.">
+    <div class="container-fluid px-0">
+        <!-- <div class="row min-vh-100 bg-pc-dark-20">
+            <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center min-vh-500 text-center p-5 mt-5 mt-lg-0">
+                <span class="badge rounded-pill fw-bold bg-pc-dark-80 text-pc-10 py-2 px-3" style="font-family: 'Gloock', serif; font-size: 15px;">Prince Collection Reviews</span>
+                <h1 class="display-2 col-lg-10 lh-1 mb-2 mt-3"  style="font-family: 'Helvetica Neue', Helvetica, Arial; font-weight: 100">{firstArticle.data.title}</h1>
+                <p class="col-md-7 fs-5 text-body-secondary mt-3 mb-2">{firstArticle.data.description}</p>
+
+                <div class="py-2">
+                    <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">Written by</span> {firstArticle.data.author}</p>
+                    <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">On</span> {firstArticle.data.pubDate.toString().slice(0,10)}</p>
+                </div>
+
+                <a href={`/reviews/${firstArticle.slug}/`}>
+                    <button class="btn btn-dark fw-bold rounded-pill px-4 mt-3 shadow">Read article</button>
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <img src={firstArticle.data.imageUrl} class=" w-100 h-100" style="object-fit: cover;" alt={firstArticle.data.imageAlt}>
+            </div>
+        </div> -->
+        
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 p-4">
+            {
+                allPosts.map((post, index) => (
+                    <div class="col">
+                <a href={`/reviews/${post.slug}/`}>
+                    <div class="card bg-pc-light rounded-4 p-3 shadow" style="min-height: 500px">
+                        <img src={post.data.imageUrl} class="card-img-top rounded-4 w-100" style="object-fit: cover;" alt={post.data.imageAlt}>
+                        <div class="card-body position-relative px-3 pb-0">
+                            <div class="d-flex flex-row">
+                                {
+                                    post.data.tags.map((tag) => (
+                                        <div class="span badge bg-secondary me-1">{tag}</div>
+                                    ))
+                                }
+                            </div>
+                            <p class="small mb-2">{post.data.pubDate.toString().slice(0,10)}</p>
+                            <h5 class="card-title fw-900 text-uppercase text-body-secondary mb-0">{post.data.title}</h5>
+                            <p class="small m-0 text-secondary mt-2 mb-0">By: {post.data.author}</p>
+                            <p class="card-text text-body-secondary pe-5">{post.data.description}</p>
+                            <i class="bi bi-plus-circle text-dark fs-2 position-absolute bottom-0 end-0"></i>
+                        </div>
+                    </div>
+            
+                </div>
+            </a>
+            </div>
+        )
+        )}
+        </div>
+    </div>
+    </Layout>

@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/sitecontent.json';
+---
+<Layout title={data.newsletter.meta.title} description={data.newsletter.meta.description}>
+    <div class="container-fluid px-0 bg-gold-1">
+        <div class="row min-vh-100">
+            <div class="col-lg-7 d-flex flex-column justify-content-end align-items-start min-vh-50 text-start p-5 mb-0 mb-lg-4 mt-5 mt-lg-0">
+                <span class="badge rounded-pill fw-bold text-bg-dark py-2 px-3 animate-in">{data.newsletter.badge}</span>
+                <h1 class="display-3 fw-bold lh-1 mb-2 mt-3 animate-in"><Fragment set:html={data.newsletter.title}/></h1>
+                <p class="fs-4 my-3 animate-in">{data.newsletter.content}</p>
+                <div class="col-lg-9 animate-in">
+                  <div class="klaviyo-form-UGQNyX animate-in"></div>
+                    <!-- <form method="post" class="w-100">
+                        <div class="input-group my-2 px-0">
+                          <input id="newsletterInputID" type="email" name="email" class:list={["form-control form-control-lg rounded-start-2 border-secondary"]} placeholder="name@example.com" aria-label="Sign up for our newsletter" aria-describedby="button-addon1" required>
+                          <button onclick="thanks()" class:list={["btn rounded-0 fw-bold rounded-end-2 btn-pc px-4 px-lg-5"]}
+                          >I'm in!</button>
+                        </div>
+                    </form> -->
+                </div>
+            </div>
+            <div class="col-lg-5 min-vh-50 d-flex justify-content-center align-items-center" style="background: linear-gradient(rgba(161, 101, 92, 0.6), rgba(161, 101, 92, 0.6)), url('/images/general/newsletter_plane.png') center bottom repeat; background-size: 50%">
+                <!-- https://cdn.pixabay.com/photo/2016/03/31/15/20/airline-1293184_1280.png -->
+                <img class="mx-auto bg-dark rounded-3" style="width: 150px; height: auto; padding: 40px" src="/images/logo-crown.png" alt="">
+            </div>
+        </div>
+        </div>
+
+        <div class="modal fade" id="newsletterSuccess" tabindex="-1" aria-labelledby="" aria-hidden="true">
+          <div class:list={["modal-dialog modal-dialog-centered modal-lg"]}>
+            <div class:list={["modal-content bg-dark text-light min-vh-500 rounded-4"]}>
+              <div class="modal-header d-none border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class:list={["modal-body p-5 d-flex flex-column justify-content-center align-items-start align-items-lg-center text-start text-lg-center"]}>
+                  <i class="bi bi-x-circle-fill position-absolute top-0 end-0 fs-3 m-3 text-pc-dark" role="button" data-bs-dismiss="modal" aria-label="Close"></i>
+                  <span class="badge rounded-pill fw-bold text-pc-light bg-pc-dark py-2 px-3">Success!</span>
+                  <h2 class="display-6 mb-2 mt-3">Thank you for <span class="text-pc">subscribing!</span></h2>
+                  <p class="mt-2 mb-3 text-balance">Please check your email to confirm your subscription!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+</Layout>
+
+<!-- <script>
+	const form = document.querySelector("#navNewsletter");
+
+async function sendData() {
+  // Associate the FormData object with the form element
+  	const formData = new FormData(form);
+	const emailField = form.elements['email'];
+	const emailValue = emailField.value;
+
+	try {
+    	const response = await fetch("https://a.klaviyo.com/client/subscriptions/?company_id=Rsd4T6", {
+      	method: "POST",
+      	headers: {revision: '2024-02-15', 'content-type': 'application/json'},
+		  body: JSON.stringify({
+    data: {
+      type: 'subscription',
+      attributes: {
+        custom_source: 'Homepage footer signup form',
+        profile: {
+          data: {
+            type: 'profile',
+            id: '01GDDKASAP8TKDDA2GRZDSVP4H',
+            attributes: {
+              email: emailValue,
+              phone_number: '+15005550006',
+              external_id: '63f64a2b-c6bf-40c7-b81f-bed08162edbe',
+              anonymous_id: '01GDDKASAP8TKDDA2GRZDSVP4H',
+              _kx: 'J8fjcn003Wy6b-3ILNlOyZXabW6dcFwTyeuxrowMers%3D.McN66',
+              first_name: '',
+              last_name: '',
+              organization: '',
+              title: '',
+              image: '',
+              location: {
+                address1: '',
+                address2: '',
+                city: 'New York',
+                country: 'United States',
+                region: 'NY',
+                zip: '10017',
+                timezone: 'America/New_York',
+                ip: '127.0.0.1'
+              },
+              properties: {newKey: 'New Value'}
+            },
+            meta: {
+              patch_properties: {append: {newKey: 'New Value'}, unappend: {newKey: 'New Value'}, unset: 'skus'}
+            }
+          }
+        }
+      },
+      relationships: {list: {data: {type: 'list', id: 'WJRt59'}}}
+    }
+  })
+    });
+    console.log(await response.json(), response.status);
+  } catch (e) {
+    // console.log(e);
+  }
+}
+
+// Take over form submission
+form.addEventListener("submit", (event) => {
+	sendData();
+	event.preventDefault();
+});
+</script> -->
+
+<!-- <script is:inline>
+function thanks() {
+  const inpObj = document.getElementById("newsletterInputID");
+  if (inpObj.checkValidity() === false) {
+    // alert("Please include a valid email address");
+  return false;
+  } else {
+    var modal1 = new bootstrap.Modal(document.getElementById('newsletterSuccess')); 
+    function showhide() { 
+        // show Modal 
+        modal1.show(); 
+        // hide the modal after 5 seconds 
+        setTimeout(() => { 
+            modal1.hide(); 
+        }, 5500) 
+    } 
+    showhide();
+  }
+}
+</script> -->

@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+// `post` will match your 'blog' collection schema type
+const { post } = Astro.props;
+
+
+// const json = JSON.stringify(
+//   allPosts.map((p) => {
+//     return {
+//       title: p.title,
+//       description: p.description,
+//       slug: p.url,
+//     };
+//   })
+// );
+---
+
+<div>
+    <!-- <Fragment set:html={post} /> -->
+    <Fragment set:html={post}/>
+
+    <!-- <Content /> -->
+</div>

@@ -1,0 +1,84 @@
+{
+  "navData": [
+    {
+      "title": "Home",
+      "description": "Welcome to Prince Collection, the new standard in luxury travel.",
+      "path": "/",
+      "icon": "bi-grid",
+      "badge": "Prince Collection",
+      "background": "bg-pc-80"
+    },
+    {
+      "title": "About",
+      "description": "Prince Collection is a full-service travel brand with an emphasis on luxury travel.",
+      "path": "/about",
+      "icon": "bi-newspaper",
+      "badge": "Who we are",
+      "background": "bg-dutch-white"
+    },
+    {
+      "title": "News",
+      "description": "Stay up-to-date with the latest developments in the world of luxury travel.",
+      "path": "/news",
+      "icon": "bi-newspaper",
+      "badge": "What's hot",
+      "background": "bg-dutch-white"
+    },
+    {
+      "title": "Reviews",
+      "path": "/reviews",
+      "description": "Join us onsite as we experience the world's best hotels and destinations and how Prince Collection’s benefits elevate your experience.",
+      "icon": "bi-hand-thumbs-up",
+      "badge": "Hotels & flights",
+      "background": "bg-pc-dark-20"
+    },
+    {
+      "title": "Guides",
+      "path": "/guides",
+      "description": "Get in-depth information on hotel programs and learn more about Prince Collection’s premier brands and vendors.",
+      "icon": "bi-book",
+      "badge": "Travel tips",
+      "background": "bg-pale-dogwood"
+    },
+    {
+      "title": "Book travel",
+      "description": "Secure your stay at the world's best hotels, enjoying exclusive benefits through Prince Collection without any additional costs.",
+      "path": "/book",
+      "icon": "bi-airplane",
+      "badge": "Your advisor",
+      "background": "bg-timberwolf"
+    },
+    {
+      "title": "Concierge",
+      "description": "Discover our Concierge service, designed exclusively for high net worth individuals and companies who seek exclusive experiences, handled for them.",
+      "path": "/concierge",
+      "icon": "bi-suitcase-lg",
+      "badge": "What we do",
+      "background": "bg-vanilla"
+    },
+    {
+      "title": "FAQ",
+      "path": "/faq",
+      "description": "Get answers to frequently asked questions about our services, helping you understand how Prince Collection can cater to your travel needs.",
+      "icon": "bi-question-square",
+      "badge": "Q and A",
+      "background": "bg-periwinkle"
+    },
+    {
+      "title": "Newsletter",
+      "description": "Reach out to the Prince Collection team for personalized support and to learn how we can elevate your travel experiences.",
+      "path": "/newsletter",
+      "icon": "bi-envelope-at",
+      "badge": "Get in touch",
+      "background": "bg-pc-dark-10"
+    },
+    {
+      "title": "Contact",
+      "description": "Reach out to the Prince Collection team for personalized support and to learn how we can elevate your travel experiences.",
+      "path": "/contact",
+      "icon": "bi-envelope-at",
+      "badge": "Get in touch",
+      "background": "bg-pc-dark-10"
+    }
+  ]
+}

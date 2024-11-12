@@ -1,0 +1,264 @@
+---
+import Drawer from './TheDrawer.astro';
+import Modal from '../components/TheModal.astro';
+import navData from '../data/sitecontent.json';
+// var loaded = false;
+---
+<header>
+	<nav id="nav" class="navbar fixed-top animate-in">
+		<div class="container-fluid">
+			<a class="navbar-brand me-auto mt-1 ms-2 text-body-secondary d-flex align-items-center" href="/">
+				<img style="width: 30px;" class="logo h-auto me-1" src="/images/logo-crown.png" alt="Prince Collection crown logo">
+			</a>
+
+			<ul class="nav justify-content-end align-items-center">
+				<li class="nav-item">
+					<a href="/book" class="p-0">
+						<button class="btn btn-dark me-2 rounded-3 px-3">
+							<i class="bi bi-airplane fs-5"></i>
+						</button>
+					</a>
+				</li>
+				<li class="nav-item">
+					<button class="btn btn-dark me-2 px-3 rounded-3" data-bs-toggle="modal" data-bs-target="#navSignup">
+						<i class="bi bi-send-plus fs-5"></i>
+					</button>
+				</li>
+
+			<!-- main menu drawer -->
+			<button data-bs-toggle="offcanvas" data-bs-target="#navDrawer" aria-controls="offcanvasBottom" class="btn btn-dark me-2 rounded-3 px-3">
+				<i class="bi bi-justify-left fs-5"></i>
+			</button>
+
+			<Drawer drawerClass="bg-pc" drawerTitle="Prince Collection" drawerId="navDrawer" drawerAriaLabel="Prince Collection Menu">
+				<div class="container-fluid px-0">
+					<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3 p-0">
+						<!-- <span class="badge bg-pc-dark text-pc-10">{item.badge}</span> -->
+						{
+						navData.navData.map((item) => (
+							<div class="col d-none d-lg-flex position-relative">
+								<a href={item.path}>
+									<div class="p-4 w-100 h-100 bg-pc-light rounded-4 shadow bg-gold-1" style="min-height: 350px;">
+										<div class="p-3 w-100 h-100 bg-pc-10 rounded-4">
+										<i class:list={["bi me-3 fs-2 text-pc-dark position-absolute end-0 top-0 me-4 mt-2", item.icon || ""]}></i>
+										<h3 class="fs-2 fw-bold mt-3">{item.title}</h3>
+										<p>{item.description}</p>
+										<button class="btn btn-sm btn-pc-dark rounded-pill px-3 shadow" style="border: 3px solid var(--pc-light)">Go <i class="bi bi-arrow-up-right"></i></button>
+										</div>
+									</div>
+								</a>
+							</div>
+							
+							<div class="col d-flex d-lg-none position-relative">
+								<a href={item.path}>
+									<div class="p-4 w-100 h-100 bg-pc-light rounded-4 shadow">
+										<div class="p-3 w-100 h-100 bg-pc-10 rounded-4">
+										<i class:list={["bi me-3 fs-2 text-pc-dark position-absolute end-0 top-0 me-4 mt-2", item.icon || ""]}></i>
+										<span class="badge bg-pc-dark text-pc-10">{item.badge}</span>
+										<h3 class="fs-2 fw-bold mt-3">{item.title}</h3>
+										<p>{item.description}</p>
+										<button class="btn btn-sm btn-pc-dark rounded-pill shadow">Go <i class="bi bi-arrow-up-right"></i></button>
+										</div>
+									</div>
+								</a>
+							</div>
+							))
+						}
+					</div>
+				</div>
+			</Drawer>
+
+			<!-- title-only menu -->
+			
+			<Drawer drawerTitle="PrinceCollection" drawerId="navDrawer2" drawerAriaLabel="Prince Collection">
+				<div class="container-fluid px-0">
+					<div class="row p-5">
+						<div class="col-lg-12 d-flex flex-column justify-content-end align-items-end">
+						{
+						navData.navData.map((item) => (
+							<a href={item.path}>
+								<div class="d-flex text-pc-dark">
+									<i class="bi bi-arrow-up-right fs-2"></i>
+									<h3 class="display-4 font-inter fw-900 text-lowercase my-0 ms-2">{item.title}</h3>
+								</div>
+							</a>
+							))
+						}
+						</div>
+					</div>
+				</div>
+			</Drawer>
+			
+		</div>
+	</nav>
+
+	<Modal modalTitle="Join Our Newsletter" modalId="navSignup" modalStyles="bg-dark text-light min-vh-500 rounded-4" modalSize="modal-lg" modalBody="d-flex flex-column justify-content-center align-items-start align-items-lg-center text-start text-lg-center">
+		<span class="badge rounded-pill fw-bold text-pc-light bg-pc-dark py-2 px-3 animate-in">Join us</span>
+		<h2 class="mb-2 mt-3 animate-in">Subscribe to the <span class="text-pc">Prince Collection</span> newsletter</h2>
+		<p class="mt-2 mb-3 text-balance animate-in">You'll receive priority information about the newest luxury properties worldwide, exclusive reservations and deals through <span class="text-pc fw-bold">Prince Collection</span>, and unique destinations across the globe.</p>
+		<div class="col-lg-8 animate-in">
+			<!-- <NewsletterForm newsletterBtn="btn-pc px-4 px-lg-5" /> -->
+			<div class="klaviyo-form-UGQNyX animate-in"></div>
+			<!-- <form id="navNewsletter" class="w-100">
+				<div class="input-group my-2 px-0">
+				  <input id="navSignupInput" type="email" name="email" class:list={["form-control rounded-start-2 border-secondary"]} placeholder="name@example.com" aria-label="Sign up for our newsletter" aria-describedby="button-addon1" required>
+				  <button class="btn rounded-0 fw-bold rounded-end-2 btn-pc px-4 px-lg-5"
+				  >I'm in!</button>
+				</div>
+			</form> -->
+			<p class="small text-pc-dark-80 pt-2">By providing your email, you agree to the Prince Collection Privacy Policy</p>
+		</div>
+	</Modal>
+
+	<div class="modal fade" id="navSuccess" tabindex="-1" aria-labelledby="" aria-hidden="true">
+		<div class:list={["modal-dialog modal-dialog-centered modal-lg"]}>
+			<div class:list={["modal-content bg-dark text-light min-vh-500 rounded-4"]}>
+			<div class="modal-header d-none border-0">
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class:list={["modal-body p-5 d-flex flex-column justify-content-center align-items-start align-items-lg-center text-start text-lg-center"]}>
+				<i class="bi bi-x-circle-fill position-absolute top-0 end-0 fs-3 m-3 text-pc-dark" role="button" data-bs-dismiss="modal" aria-label="Close"></i>
+				<span class="badge rounded-pill fw-bold text-pc-light bg-pc-dark py-2 px-3">Success!</span>
+				<h2 class="display-6 mb-2 mt-3">Thank you for <span class="text-pc">subscribing!</span></h2>
+				<p class="mt-2 mb-3 text-balance">Please check your email to confirm your subscription!</p>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- main menu modal -->
+	<div class="modal fade" id="navModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen p-3">
+			<div class="modal-content rounded-4 bg-pc">
+			<div class="modal-header border-0" style="background: transparent !important;">
+				<div class="modal-title fs-5">
+					<img class="ms-2" style="width: 30px; height: 30px;" src="/images/logos/logo-crown.png" alt="Prince Collection crown logo">
+				</div>
+				<i class="bi bi-x-circle-fill position-absolute top-0 end-0 fs-2 m-3 text-pc-dark" role="button" data-bs-dismiss="modal" aria-label="Close"></i>
+			</div>
+			<div class="modal-body py-0 ">
+			<div class="container-fluid">
+				<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 p-3">
+					{
+					navData.navData.map((item) => (
+						<div class="col position-relative">
+							<a href={item.path}>
+								<div class="p-4 bg-pc-10 rounded-4 shadow" style="min-height: 300px">
+									<i class:list={["bi me-3 fs-2 text-pc-dark position-absolute end-0 top-0 me-4 mt-2", item.icon || ""]}></i>
+									<span class="badge bg-pc-dark text-pc-10">{item.badge}</span>
+									<h3 class="fs-2 fw-bold mt-3">{item.title}</h3>
+									<p>Id ea eiusmod magna cupidatat proident commodo tempor sit incididunt. Fugiat aliquip officia exercitation ad culpa ipsum est.</p>
+									<button class="btn btn-sm btn-pc-dark rounded-pill shadow">Go <i class="bi bi-arrow-up-right"></i></button>
+								</div>
+							</a>
+						</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</header>
+
+<script>
+// 	function thanks() {
+//   const inpObj = document.getElementById("newsletterInputID");
+//   if (inpObj.checkValidity() === false) {
+//     // alert("Please include a valid email address");
+//   return false;
+//   } else {
+//     var modal1 = new bootstrap.Modal(document.getElementById('newsletterSuccess')); 
+//     function showhide() { 
+//         // show Modal 
+//         modal1.show(); 
+//         // hide the modal after 5 seconds 
+//         setTimeout(() => { 
+//             modal1.hide(); 
+//         }, 5500) 
+//     } 
+//     showhide();
+//   }
+// }
+
+
+// const form = document.querySelector("#navNewsletter");
+
+// async function sendData() {
+//   // Associate the FormData object with the form element
+//   	const formData = new FormData(form);
+// 	const emailField = form.elements['email'];
+// 	const emailValue = emailField.value;
+
+// 	try {
+//     	const response = await fetch("https://a.klaviyo.com/client/subscriptions/?company_id=Rsd4T6", {
+//       	method: "POST",
+//       	headers: {revision: '2024-02-15', 'content-type': 'application/json'},
+// 		  body: JSON.stringify({
+//     data: {
+//       type: 'subscription',
+//       attributes: {
+//         custom_source: 'Homepage footer signup form',
+//         profile: {
+//           data: {
+//             type: 'profile',
+//             id: '01GDDKASAP8TKDDA2GRZDSVP4H',
+//             attributes: {
+//               email: emailValue,
+//               phone_number: '+15005550006',
+//               external_id: '63f64a2b-c6bf-40c7-b81f-bed08162edbe',
+//               anonymous_id: '01GDDKASAP8TKDDA2GRZDSVP4H',
+//               _kx: 'J8fjcn003Wy6b-3ILNlOyZXabW6dcFwTyeuxrowMers%3D.McN66',
+//               first_name: '',
+//               last_name: '',
+//               organization: '',
+//               title: '',
+//               image: '',
+//               location: {
+//                 address1: '',
+//                 address2: '',
+//                 city: 'New York',
+//                 country: 'United States',
+//                 region: 'NY',
+//                 zip: '10017',
+//                 timezone: 'America/New_York',
+//                 ip: '127.0.0.1'
+//               },
+//               properties: {newKey: 'New Value'}
+//             },
+//             meta: {
+//               patch_properties: {append: {newKey: 'New Value'}, unappend: {newKey: 'New Value'}, unset: 'skus'}
+//             }
+//           }
+//         }
+//       },
+//       relationships: {list: {data: {type: 'list', id: 'WJRt59'}}}
+//     }
+//   })
+//     });
+//     console.log(await response.json(), response.status);
+//   } catch (e) {
+//     // console.log(e);
+//   }
+// }
+
+// // Take over form submission
+// form.addEventListener("submit", (event) => {
+// 	sendData();
+// 	event.preventDefault();
+// });
+// </script>
+
+<style>
+
+nav {
+	transition: all .3s ease-in-out;
+}
+.nav-item a {
+	font-family: 'Inter tight', Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	padding: 10px;
+	color: inherit;
+	text-decoration: none;
+}
+</style>

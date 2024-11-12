@@ -1,0 +1,359 @@
+---
+import '../assets/css/main.css';
+import "aos/dist/aos.css"; // AOS styles
+import { ViewTransitions } from "astro:transitions";
+import TheNav from '../components/TheNav.astro';
+import TheFooter from '../components/TheFooter.astro';
+
+const { title, description, image, isLoaded } = Astro.props;
+
+interface Props {
+	title: string;
+	description: string;
+	image?: string;
+}
+
+// const siteUrl = Astro.url.pathname;
+// const siteUrl = new URL(Astro.url.pathname, Astro.site);
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-NFNM89Q4');</script>
+		<!-- End Google Tag Manager -->
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" sizes="32x28" href="/favicon.png">
+
+		<!-- Global Metadata -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="google-site-verification" content="Wb-842E_8xKjRrMshTmExdLcBbnMDZaJOsgnvQYB_GY" />
+
+		<!-- icons -->
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple_touch.png"> 
+
+		<!-- Font preloads -->
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;900&family=Gloock&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+		<!-- bootstrap css -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+		<!-- Canonical URL -->
+		<link rel="canonical" href={Astro.url} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={`https://princeoftravel.com${Astro.url.pathname}`}/>
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<!-- <meta property="og:image" content={'https://princecollection.com' + image || 'https://princecollection.com/images/video/pc-social-banner.jpeg'} /> -->
+		<meta property="og:image" content="./public/images/video/pc-video-placeholder.jpeg" />
+		<!-- `${post.data.title} | Omar45` -->
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<!-- <meta property="twitter:image" content={'https://princecollection.com' + image || 'https://princecollection.com/images/video/pc-social-banner.jpeg'} /> -->
+		<meta property="twitter:image" content="./public/images/video/pc-video-placeholder.jpeg" />
+		
+		<!-- Netlify CMS -->
+		<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
+		<!-- <ViewTransitions /> -->
+	</head>
+	<TheNav/>
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFNM89Q4"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<main>
+			<slot />
+		</main>
+	<TheFooter/>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Rsd4T6" onload="loaded=true;"></script>
+	<!-- <script src="../js/googleAds.js"></script> -->
+		<!-- { Astro.url.pathname.includes('concierge') && 
+		<script type="text/javascript" src='https://forms.zoho.com/js/zf_gclid.js'></script>
+		} -->
+	<script>
+		var loaded = false;
+		// AOS init + reinit on page change
+		import { aosInit } from "../js/aosInit";
+		aosInit();
+
+		document.addEventListener('astro:after-swap', () => {
+			window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
+			lazyLoad();
+			aosInit();
+			console.log('AOS reloaded!');
+		});
+
+		// decap/netlify
+		if (window.netlifyIdentity) {
+			window.netlifyIdentity.on("init", user => {
+			if (!user) {
+				window.netlifyIdentity.on("login", () => {
+				document.location.href = "/admin/";
+				});
+			}
+			});
+		}
+
+		const options = {
+			root: null, // The element that is used as the viewport for checking visibility of the target. Defaults to the browser viewport when null.
+			rootMargin: '500px', // The margin value to be used along the sides of the root element to compute intersection.
+			threshold: 0  // Indicates at what % of target's visibility the observer's callback should be executed.
+		};
+
+		function lazyLoad() {
+
+		// lazyload images
+		const observer = new IntersectionObserver(callback, options);
+		var lazyImages = [].slice.call(document.querySelectorAll("img"));
+		const imageLazy = document.querySelectorAll("#content > img");
+		const noLazy = lazyImages.slice(0,2);
+
+		lazyImages.forEach((lazyImage)=> {
+			// add animate-in class to all images
+			lazyImage.classList.add('invisible');
+			// check if image contains logo class so it loads immediately
+			if (lazyImage.classList.contains('logo')) {
+				lazyImage.classList.remove('invisible');
+			} else if (lazyImage.hasAttribute("data-src")) {
+				// add placeholder until src is replaced
+				lazyImage.src = '/images/general/pc-placeholder-light.png';
+				observer.observe(lazyImage);
+			} else {
+				// add loading attribute to post images
+				lazyImage.setAttribute('loading', 'lazy');
+				lazyImage.classList.remove('invisible');
+				
+			}
+		});
+
+		function callback(entries, observer){
+			entries.forEach((entry) => {
+				const target = entry.target;
+				const dataSrc = target.getAttribute('data-src');        
+				if (entry.isIntersecting) {
+					// put the desired url(dataSrc) as the src          
+					target.setAttribute('src', dataSrc);
+					target.classList.add('animate-in');
+					target.classList.remove('invisible');
+				// stop observing the element
+				observer.unobserve(target);
+				}        
+			});    
+		};
+		}
+
+		lazyLoad();
+		// function thanks(inputID, modalID) {
+		// 	const inpObj = document.getElementById(inputID);
+		// 	if (inpObj.checkValidity() === false) {
+		// 		// alert("Please include a valid email address");
+		// 	return false;
+		// 	} else {
+		// 		var modal1 = new bootstrap.Modal(document.getElementById(modalID)); 
+		// 		function showhide() { 
+		// 			// show Modal 
+		// 			modal1.show(); 
+		// 			// hide the modal after 5 seconds 
+		// 			setTimeout(() => { 
+		// 				modal1.hide(); 
+		// 			}, 5500) 
+		// 		} 
+		// 		showhide();
+		// 	}
+		// }
+
+		</script>
+		<script is:inline>
+			function getValue(p_n, ix){
+	
+				var q_s = '';
+				if  (p_n == 'q'){
+					var ref = document.referrer;
+					if (ref != undefined) {
+					q_s= ref.split('?')[1];
+					}
+				}
+				else{
+					try{
+							q_s = window.top.location.search.substring(1);
+					}
+					catch(e){
+						q_s = '';
+					}
+				}
+				var pa_n = p_n +'='; 
+				var p_v = '';
+				if(q_s!=undefined && q_s.length > 0 ){
+					var begin = q_s.indexOf( pa_n );
+					if ( begin != -1 ){
+						begin += pa_n.length; 
+						var end = q_s.indexOf( '&' , begin );
+						if ( end == -1 ){
+							end = q_s.length
+						}
+						p_v = q_s.substring( begin, end );
+					}
+				}
+				if (p_v == undefined || p_v==''){
+					p_v=g_c(GAd.indexValueArr[ix]);
+				}
+				if (p_v!=undefined){
+					p_v = p_v.replace(/\+/g,' ');
+				}
+				return p_v;
+			}
+
+
+			GAd.prop=GAd.prop || [];
+			GAd.indexValueArr=new Array('gclid');
+			function GAd(){ 
+
+			}
+			GAd.prototype.initialize=function(){
+				
+				GAd.prop.push([GAd.indexValueArr[0],getValue(GAd.indexValueArr[0],0)]);
+				//GAd.prop.push([GAd.indexValueArr[1],getValue(GAd.indexValueArr[1],1)]);
+				//GAd.prop.push([GAd.indexValueArr[2],getValue(GAd.indexValueArr[2],2)]);
+				for (var i=0;i<GAd.prop.length;i++){
+					this.s_c(i);	
+				}
+				//this.s_Hid();
+				
+			}
+			GAd.prototype.s_Hid=function(){
+				
+				var all_Frm = document.forms;
+				
+				for( var i = 0; i < all_Frm.length; i++ ) {
+					var frm = all_Frm[i];
+						for (var ii=0;ii<frm.length;ii++){
+				
+							if( frm.elements[ii].name == 'zc_gad' ) {
+								
+								var p = g_c(GAd.indexValueArr[0]);
+								var hidEl = document.getElementsByName('zc_gad');
+								if (hidEl){
+									for (var idx =0 ; idx < hidEl.length; idx++ ){
+										hidEl[idx].value = p;   
+											}
+								}
+							
+							}
+						}
+				}
+			}
+			GAd.prototype.s_c=function(index,path,domain,secure)
+			{
+				var value = GAd.prop[index];
+				var c_str = GAd.indexValueArr[index] + "=" + escape( value[1] );
+				var exp_d=30;
+				var exdate=new Date();
+				exdate.setDate(exdate.getDate()+exp_d);
+				c_str += "; expires=" + exdate.toGMTString();//No I18N
+				//if ( path )
+				c_str += "; path=/";//No I18N
+				if ( domain ) {
+					c_str += "; domain=" + escape( domain );//No I18N
+				}
+				if ( secure ) {
+					c_str += "; secure";//No I18N
+				}
+				document.cookie = c_str;
+			}
+			new GAd().initialize();
+
+			function g_c(c_name){
+					var cArr = document.cookie.split('; ');
+					var cArrLen = cArr.length;
+					for (var i = 0; i < cArrLen ; i++) {
+							var cVals = cArr[i].split('=');
+					if (cVals[0] === c_name && cVals[1]){
+						return unescape(cVals[1]);
+					}
+					}
+			}
+
+			/* Iframe support goes here */
+			function IFrameSupport()
+			{
+				
+				var frm = document.getElementsByTagName("iframe");
+				for(var i = 0; i < frm.length; ++i){
+					
+					if((frm[i].src).indexOf('formperma') > 0 ){
+						var gclid = g_c(GAd.indexValueArr[0]);
+						var src = frm[i].src;
+						if(src.indexOf('?') > 0){
+										src = src+"&gclid="+gclid;//No I18N
+						}else{
+							src = src+"?gclid="+gclid;//No I18N
+						}
+						frm[i].src = src;
+					}else{
+						var gclid = g_c(GAd.indexValueArr[0]);
+						var src = frm[i].src;
+					}	
+				}
+			}
+			IFrameSupport();
+
+			/* JSPERMA support goes here */
+			function JSEmbedSupport(id) {
+				document.getElementById('zforms_iframe_id').removeAttribute("onload"); 
+				var frm11 = document.getElementById("zforms_iframe_id");
+				var gclid = g_c(GAd.indexValueArr[0]);
+				
+				var src1 = frm11.src;
+				if(src1.indexOf('?') > 0){
+					src1 = src1+"&gclid="+gclid;//No I18N
+				}else{
+				src1 = src1+"?gclid="+gclid;//No I18N
+				}
+				frm11.src = src1;
+			}
+			/* Download Html support goes here */
+			function downloadHtmlGclid() {
+				var gclid = g_c(GAd.indexValueArr[0]);
+				if(typeof(document.forms.form) != 'undefined'){
+					if(typeof(document.forms.form.zc_gad) != 'undefined'){
+						var fieldObj = document.forms.form.zc_gad;
+						if(fieldObj){
+							fieldObj.value = gclid;
+						}
+					}
+				}
+			
+			}
+			downloadHtmlGclid();
+		</script>
+	</body>
+</html>

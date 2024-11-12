@@ -1,0 +1,320 @@
+---
+const { bookingForm } = Astro.props;
+---
+<!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
+<form action='https://forms.zohopublic.com/princecollection/form/ConciergeSalesPC/formperma/Jkeda8KEcpnjg86BRvRk2DN9DuQe7CDA6mjKV45eeII/htmlRecords/submit' name='form' id='form' method='POST' accept-charset='UTF-8' enctype='multipart/form-data' class="w-100">
+    <input type="hidden" name="zf_referrer_name" value=""><!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
+    <input type="hidden" name="zf_redirect_url" value=""><!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
+    <input type="hidden" name="zc_gad" value=""><!-- If GCLID is enabled in Zoho CRM Integration, click details of AdWords Ads will be pushed to Zoho CRM -->
+    <input type="hidden" name="utm_source" value=""/>
+    <input type="hidden" name="utm_medium" value=""/>
+    <input type="hidden" name="utm_campaign" value=""/>
+    <input type="hidden" name="utm_term" value=""/>
+    <input type="hidden" name="utm_content" value=""/>
+    <input type="hidden" name="gclid" value=""/>
+    <input type="hidden" name="referrername" value=""/>
+
+    <div class="container">
+        <div class:list={["row g-4 rounded-3", bookingForm]}>
+            
+            <div class="col-lg-6 d-flex flex-column">
+                <!--Single Line-->
+                <label> 
+                First Name 
+                <em>*</em>
+                </label>
+                <input class="form-control w-100" type="text" name="SingleLine1" value="" fieldType=1 maxlength="255" placeholder="" />
+            </div>
+            <div class="col-lg-6 d-flex flex-column">
+                <!--Single Line-->
+                <label> 
+                Last Name 
+                <em>*</em>
+                </label>
+                <input class="form-control w-100" type="text" name="SingleLine" value="" fieldType=1 maxlength="255" placeholder="" />
+            </div>
+            <div class="col-lg-6 d-flex flex-column">
+                <!--Email-->
+                <label> Email 
+                <em>*</em>
+                </label>
+                <input class="form-control w-100" type="text" maxlength="255" name="Email" value="" fieldType=9 placeholder="name@example.com" />
+                </div>
+                <div class="col-lg-6 d-flex flex-column">
+                <!--Phone-->
+                <label> Phone 
+                <em>*</em>
+                </label>
+                <input class="form-control w-100" type="text" compname="PhoneNumber" name="PhoneNumber_countrycode" phoneFormat="1" isCountryCodeEnabled=false maxlength="20" value="" fieldType=11 id="international_PhoneNumber_countrycode" placeholder="" />
+            </div>
+    <!-- <label>Number</label> -->
+
+            <div class="col-lg-12 d-flex flex-column">
+                <!--Single Line-->
+                <label> 
+                Where is your home base? 
+                <em>*</em>
+                </label>
+                <input class="form-control w-100" type="text" name="SingleLine2" value="" fieldType=1 maxlength="255" placeholder="(e.g. City where you live)" />
+            </div>
+
+            <div class="col-lg-12">
+                <!--Single Line-->
+                <label> 
+                How many trips do you take (or plan to take) per month over the next year? 
+                </label>
+                <input class="form-control w-100" type="text" name="SingleLine7" value="" fieldType=1 maxlength="255" placeholder="" />
+            </div>
+
+            <div class="col-lg-12 d-flex flex-column">
+                <div class="dropdown">
+                    <button class="btn btn-outline-light rounded-3 mt-0 form-control dropdown-toggle text-balance" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        Are you interested in our Concierge Service for:
+                    </button>
+                    <ul class="row g-2 dropdown-menu bg-pc-dark w-100 p-4 rounded-4">
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" id="Checkbox_1" name="Checkbox" value="Individual&#x20;Travel">
+                        <label class="btn btn-outline-light w-100" for="btn-check">Individual&#x20;Travel</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off" id="Checkbox_2" name="Checkbox" value="Family&#x20;Travel">
+                        <label class="btn btn-outline-light w-100" for="btn-check-2">Family&#x20;Travel</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off" id="Checkbox_3" name="Checkbox" value="Trips&#x20;with&#x20;Friends">
+                        <label class="btn btn-outline-light w-100" for="btn-check-3">Trips&#x20;with&#x20;Friends</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off" id="Checkbox_4" name="Checkbox" value="Business&#x20;Travel&#x20;&#x28;Individual&#x29;">
+                        <label class="btn btn-outline-light w-100" for="btn-check-4">Business&#x20;Travel&#x20;&#x28;Individual&#x29;</label>
+                    </li>
+                    <li class="col-md-12">
+                        <input type="checkbox" class="btn-check" id="btn-check-5" autocomplete="off" id="Checkbox_5" name="Checkbox" value="Business&#x20;Travel&#x20;&#x28;Teams&#x29;">
+                        <label class="btn btn-outline-light w-100" for="btn-check-5">Business&#x20;Travel&#x20;&#x28;Teams&#x29;</label>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-12 d-flex flex-column">
+                <div class="dropdown">
+                    <button class="btn btn-outline-light rounded-3 mt-0 form-control dropdown-toggle text-balance" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        What are the biggest challenges you face as a traveller?
+                    </button>
+                    <ul class="row g-2 dropdown-menu bg-pc-dark w-100 p-4 rounded-4">
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-6" autocomplete="off" id="Checkbox_1_1" name="Checkbox1" value="Making&#x20;&amp;&#x20;managing&#x20;travel&#x20;bookings">
+                        <label class="btn btn-outline-light w-100" for="btn-check-6">Making&#x20;&amp;&#x20;managing&#x20;travel&#x20;bookings</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-7" autocomplete="off" id="Checkbox_1_2" name="Checkbox" value="Optimizing&#x20;Elite&#x20;status">
+                        <label class="btn btn-outline-light w-100" for="btn-check-7">Optimizing&#x20;Elite&#x20;status</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-8" autocomplete="off" id="Checkbox_1_3" name="Checkbox1" value="Last&#x20;minute&#x20;new&#x20;bookings">
+                        <label class="col btn btn-outline-light w-100" for="btn-check-8">Last&#x20;minute&#x20;new&#x20;bookings</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-9" autocomplete="off" id="Checkbox_1_4" name="Checkbox1" value="Last&#x20;minute&#x20;changes&#x20;to&#x20;existing&#x20;bookings">
+                        <label class="btn btn-outline-light w-100" for="btn-check-9">Last&#x20;minute&#x20;changes&#x20;to&#x20;existing&#x20;bookings</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-10" autocomplete="off" id="Checkbox_1_5" name="Checkbox1" value="Managing&#x20;credit&#x20;card&#x20;point&#x20;strategies">
+                        <label class="btn btn-outline-light w-100" for="btn-check-10">Managing&#x20;credit&#x20;card&#x20;point&#x20;strategies</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-11" autocomplete="off" id="Checkbox_1_6" name="Checkbox1" value="Optimizing&#x20;points&#x20;redemptions&#x20;for&#x20;travel">
+                        <label class="btn btn-outline-light w-100" for="btn-check-11">Optimizing&#x20;points&#x20;redemptions&#x20;for&#x20;travel</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-12" autocomplete="off" id="Checkbox_1_7" name="Checkbox1" value="Emergency&#x20;trip&#x20;support">
+                        <label class="btn btn-outline-light w-100" for="btn-check-12">Emergency&#x20;trip&#x20;support</label>
+                    </li>
+                    <li class="col-md-6">
+                        <input type="checkbox" class="btn-check" id="btn-check-13" autocomplete="off" id="Checkbox_1_8" name="Checkbox1" value="Making&#x20;and&#x20;managing&#x20;bookings&#x20;for&#x20;multiple&#x20;people">
+                        <label class="btn btn-outline-light w-100" for="btn-check-13">Making&#x20;and&#x20;managing&#x20;bookings&#x20;for&#x20;multiple&#x20;people</label>
+                    </li>
+                    <li  class="col-md-12">
+                        <input type="checkbox" class="btn-check" id="btn-check-14" autocomplete="off" id="Checkbox_1_9" name="Checkbox1" value="Other">
+                        <label class="btn btn-outline-light w-100" for="btn-check-14">Other</label>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+
+    <!--Checkbox-->
+    <!-- <label>Are you interested in our Concierge Service for (select all that apply):
+    </label>
+    <input type="checkbox" id="Checkbox_1" name="Checkbox" value="Individual&#x20;Travel"/>
+    <label for="Checkbox_1">Individual&#x20;Travel</label>
+    <input type="checkbox" id="Checkbox_2" name="Checkbox" value="Family&#x20;Travel"/>
+    <label for="Checkbox_2">Family&#x20;Travel</label>
+    <input type="checkbox" id="Checkbox_3" name="Checkbox" value="Trips&#x20;with&#x20;Friends"/>
+    <label for="Checkbox_3">Trips&#x20;with&#x20;Friends</label>
+    <input type="checkbox" id="Checkbox_4" name="Checkbox" value="Business&#x20;Travel&#x20;&#x28;Individual&#x29;"/>
+    <label for="Checkbox_4">Business&#x20;Travel&#x20;&#x28;Individual&#x29;</label>
+    <input type="checkbox" id="Checkbox_5" name="Checkbox" value="Business&#x20;Travel&#x20;&#x28;Teams&#x29;"/>
+    <label for="Checkbox_5">Business&#x20;Travel&#x20;&#x28;Teams&#x29;</label>
+    </div> -->
+
+    <!--Checkbox-->
+    <!-- <label>What are the biggest challenges you face as a frequent traveller? (select all that apply)
+    <em>*</em>
+    </label>
+    <input type="checkbox" id="Checkbox1_1" name="Checkbox1" value="Making&#x20;&amp;&#x20;managing&#x20;travel&#x20;bookings"/>
+    <label for="Checkbox1_1">Making&#x20;&amp;&#x20;managing&#x20;travel&#x20;bookings</label>
+    <input type="checkbox" id="Checkbox1_2" name="Checkbox1" value="Optimizing&#x20;Elite&#x20;status"/>
+    <label for="Checkbox1_2">Optimizing&#x20;Elite&#x20;status</label>
+    <input type="checkbox" id="Checkbox1_3" name="Checkbox1" value="Last&#x20;minute&#x20;new&#x20;bookings"/>
+    <label for="Checkbox1_3">Last&#x20;minute&#x20;new&#x20;bookings</label>
+    <input type="checkbox" id="Checkbox1_4" name="Checkbox1" value="Last&#x20;minute&#x20;changes&#x20;to&#x20;existing&#x20;bookings"/>
+    <label for="Checkbox1_4">Last&#x20;minute&#x20;changes&#x20;to&#x20;existing&#x20;bookings</label>
+    <input type="checkbox" id="Checkbox1_5" name="Checkbox1" value="Managing&#x20;credit&#x20;card&#x20;point&#x20;strategies"/>
+    <label for="Checkbox1_5">Managing&#x20;credit&#x20;card&#x20;point&#x20;strategies</label>
+    <input type="checkbox" id="Checkbox1_6" name="Checkbox1" value="Optimizing&#x20;points&#x20;redemptions&#x20;for&#x20;travel"/>
+    <label for="Checkbox1_6">Optimizing&#x20;points&#x20;redemptions&#x20;for&#x20;travel</label>
+    <input type="checkbox" id="Checkbox1_7" name="Checkbox1" value="Emergency&#x20;trip&#x20;support"/>
+    <label for="Checkbox1_7">Emergency&#x20;trip&#x20;support</label>
+    <input type="checkbox" id="Checkbox1_8" name="Checkbox1" value="Making&#x20;and&#x20;managing&#x20;bookings&#x20;for&#x20;multiple&#x20;people"/>
+    <label for="Checkbox1_8">Making&#x20;and&#x20;managing&#x20;bookings&#x20;for&#x20;multiple&#x20;people</label>
+    <input type="checkbox" id="Checkbox1_9" name="Checkbox1" value="Other"/>
+    <label for="Checkbox1_9">Other</label> -->
+    <!--Dropdown-->
+    <label>
+        What is your monthly budget (USD) for a concierge service that can help with those challenges?
+        </label>
+    <select name="Dropdown" class="form-select mb-3 mt-1 bg-pc-dark border-0 border-bottom rounded-0 text-pc" aria-label="Currency select" checktype="c1">
+        <option selected="true" value="-Select-">-Select-</option>
+        <option value="Under&#x20;&#x24;1000">Under &#x24;1000</option>
+        <option value="&#x24;1000-1500">&#x24;1000-1500</option>
+        <option value="&#x24;1500-2000">&#x24;1500-2000</option>
+        <option value="&#x24;2000&#x2b;">&#x24;2000&#x2b;</option>
+        <option value="Not&#x20;sure,&#x20;I&#x20;need&#x20;more&#x20;information">Not sure, I need more information</option>
+      </select>
+
+    <!-- <label>
+    What is your monthly budget (USD) for a concierge service that can help with those challenges?
+    </label>
+    <select name="Dropdown">
+    <option selected="true" value="-Select-">-Select-</option>
+    <option value="Under&#x20;&#x24;1000">Under &#x24;1000</option>
+    <option value="&#x24;1000-1500">&#x24;1000-1500</option>
+    <option value="&#x24;1500-2000">&#x24;1500-2000</option>
+    <option value="&#x24;2000&#x2b;">&#x24;2000&#x2b;</option>
+    <option value="Not&#x20;sure,&#x20;I&#x20;need&#x20;more&#x20;information">Not sure, I need more information</option>
+    </select> -->
+
+    <label> Anything else that you would like to add? 
+    </label>
+    <input type="text" class="form-control w-100 py-3" aria-label="Any added comments" aria-describedby="inputGroup-sizing-default" name="MultiLine" maxlength="65255" placeholder="(e.g. Room type, special occasion, budget...)">
+
+    <!-- Multi Line
+    <label> Anything else that you would like to add? 
+    </label>
+    <textarea name="MultiLine" maxlength="65535" placeholder="" ></textarea> -->
+
+    <!--Decision Box-->
+    <!-- <input type="checkbox" id="DecisionBox" name="DecisionBox"/> -->
+    
+    <!-- newsletter signup -->
+    <!-- <div class="d-flex my-4"> 
+        <input type="checkbox" class="btn-check" name="DecisionBox" id="DecisionBox" autocomplete="off">
+        <label id="signUpBtn" class="sign-up btn btn-outline-light me-2" for="DecisionBox"><i id="signUpIcon" class="bi bi-x fs-5"></i></label>
+        <p class="m-0 d-flex align-items-center justify-content-center" style="color: #fbe3de">Sign up for our newsletter for news, deals, and info straight to your inbox.</p>
+    </div> -->
+
+    <!-- <input type="checkbox" class="btn-check" name="DecisionBox" id="DecisionBox" autocomplete="off">
+    <label class="sign-up btn btn-outline-light" for="DecisionBox"><i class="bi bi-check fs-3"></i></label> -->
+
+    <button type="submit" class="btn btn-pc d-none d-md-block px-4 py-1 fs-5 rounded-5">Submit <i class="bi bi-arrow-up-right-circle-fill text-pc-dark fs-4 ms-2" role="button"></i></button>
+    <button type="submit" class="btn btn-dark d-block d-md-none w-100 px-4 py-1 fs-5 rounded-5">Submit <i class="bi bi-arrow-up-right-circle-fill text-pc-dark fs-4 ms-2" role="button"></i></button>
+</div>
+</div>
+</form>
+
+<!-- <script>
+    let signup = document.querySelector("#signUpIcon");
+    let btn = document.querySelector("#signUpBtn");
+    function toggleChecked() {
+    if (btn.checked = false) {
+        signup.classList.remove("bi-check");
+    } else if(btn.checked = true) {
+        signup.classList.toggle("bi-check")
+        signup.classList.toggle("bi-x")
+    }
+    }
+    btn.addEventListener('click', toggleChecked);
+</script> -->
+
+<style scoped>
+    .sign-up.btn {
+        padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+    }
+    .dropdown-menu {
+        /* background: rgba(0,0,0,1); */
+    }
+    .dropdown-menu.show {
+        display: flex;
+    }
+    .dropdown-menu li {
+        margin: 0;
+    }
+    .dropdown-menu li > label {
+        min-height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    }
+
+    input, input:focus {
+        border: 0;
+        background: transparent;
+        border-bottom: 1px solid #fbe3de;
+        border-radius: 0;
+        box-shadow: none;
+        color: #fff;
+    }
+    select, 
+    select:focus {
+        background: transparent;
+        box-shadow: none;
+    }
+    label {
+        color: #fbe3de;
+        font-weight: light;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    textarea {
+        background: transparent;
+    }
+    input::placeholder {
+       font-size: 14px;
+        color: #f0beb4;
+        opacity: 1; /* Firefox */
+    }
+    /* Change the white to any color */
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+} */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+}
+/*Change text in autofill textbox*/
+input:-webkit-autofill{
+    -webkit-text-fill-color: white !important;
+}
+
+</style>

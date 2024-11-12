@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Drawer from '../components/TheDrawer.astro';
+import data from '../data/sitecontent.json';
+---
+
+<Layout title="Welcome to Prince Collection" description="Prince Collection">
+		<div class="container-fluid px-0 px-lg-5 pt-3 text-body-secondary  bg-gold-2">
+			<div class="row min-vh-500">
+				<div class="col-lg-10 offset-lg-1 d-flex flex-column justify-content-center align-items-center min-vh-500 text-center px-5 pt-5">
+                    <span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3">{data.faq.badge}</span>
+					<h1 class="display-2 fw-bold lh-1 mb-2 mt-3"><Fragment set:html={data.faq.title} /></h1>
+					<p class="col-md-7 fs-5 mt-3 mb-0">{data.faq.content}</p>
+				</div>
+			</div>
+
+			<div class="row p-4">
+				<div class="col-lg-12">
+					<div class="d-flex flex-column justify-content-center align-items-start p-5 bg-pc-10 rounded-4" style="min-height: 375px">
+						<i class:list={["bi text-pc-dark-10 fs-2 px-3 py-2 shadow rounded-3 bg-pc-dark-80", data.faq.intro[0].icon]}></i>
+						<h2 class="display-6 fw-bold text-pc-dark">{data.faq.intro[0].title}</h2>
+						<p class="ps-4 col-lg-11" style="border-left: 3px solid var(--pc-dark);">{data.faq.intro[0].content}</p>
+					</div>
+				</div>
+				<div class="col-lg-12 mt-3">
+					<div class="d-flex flex-column justify-content-center align-items-start p-5 bg-pc-10 rounded-4" style="min-height: 375px">
+						<i class:list={["bi text-pc-dark-10 fs-2 px-3 py-2 shadow rounded-3 bg-pc-dark-80", data.faq.intro[1].icon]}></i>
+						<h2 class="display-6 fw-bold text-pc-dark mb-0">{data.faq.intro[1].title}</h2>
+						<p class="ps-4" style="border-left: 3px solid var(--pc-dark);">{data.faq.intro[1].content}</p>
+					</div>
+				</div>
+				<div class="col-lg-12 mt-3">
+					<div class="d-flex flex-column justify-content-center align-items-start p-5 bg-pc-10 rounded-4" style="min-height: 375px">
+						<i class:list={["bi text-pc-dark-10 fs-2 px-3 py-2 shadow rounded-3 bg-pc-dark-80", data.faq.intro[2].icon]}></i>
+						<h2 class="display-6 fw-bold text-pc-dark">{data.faq.intro[2].title}</h2>
+						<p class="ps-4" style="border-left: 3px solid var(--pc-dark);">{data.faq.intro[2].content}</p>
+					</div>
+				</div>
+				<div class="col-lg-6 mt-3">
+					<div class="p-5 min-vh-50 bg-timberwolf rounded-4">
+						<i class:list={["bi text-pc-dark-10 fs-2 px-3 py-2 shadow rounded-3 bg-pc-dark-80", data.faq.travel_agency_icon]}></i>
+						<h2 class="display-6 fw-bold text-pc-dark">{data.faq.travel_agency_title}</h2>
+						<!-- <p>{data.faq.intro[2].content}</p> -->
+						<p>Get answers to our most frequently asked questions about Prince Collection's Travel Agency and our related services.</p>
+						<button class="btn btn-light rounded-pill border-0 px-4 shadow bg-pc" data-bs-toggle="offcanvas" data-bs-target="#TA_Drawer" aria-controls="offcanvasBottom">Get the FAQs</button>
+					</div>
+				</div>
+				<div class="col-lg-6 mt-3">
+					<div class="p-5 min-vh-50 bg-pc-light rounded-4">
+						<i class:list={["bi text-pc-dark-10 fs-2 px-3 py-2 shadow rounded-3 bg-pc-dark-80", data.faq.concierge_icon]}></i>
+						<h2 class="display-6 fw-bold text-pc-dark">{data.faq.concierge_title}</h2>
+						<!-- <p>{data.faq.intro[2].content}</p> -->
+						<p>Get answers to our most frequently asked questions about the Prince Collection Concierge and related services.</p>
+						<button class="btn btn-light rounded-pill border-0 px-4 shadow bg-pc" data-bs-toggle="offcanvas" data-bs-target="#C_Drawer" aria-controls="offcanvasBottom">Get the FAQs</button>
+					</div>
+				</div>
+			</div>
+	
+			<Drawer drawerTitle="Prince Collection Travel Agency" drawerId="TA_Drawer" drawerAriaLabel="Prince Collection Travel Agency">
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1 d-flex flex-column justify-content-center align-items-center text-center p-5">
+						<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3">{data.faq.travel_agency_faq_hero.badge}</span>
+						<h1 class="display-2 fw-bold lh-1 mb-2 mt-3"><Fragment set:html={data.faq.travel_agency_faq_hero.title} /></h1>
+						<p class="col-md-8 fs-5 mt-3 mb-0">{data.faq.travel_agency_faq_hero.content}</p>
+					</div>
+					<div class="col-lg-10 offset-lg-1">
+						<div class="accordion accordion-flush" id="faqAccordion">
+						{
+						data.faq.travel_agency.map((item, index) => (
+						<div class="accordion accordion-flush px-3" id="faqAccordion">
+							<div class="accordion-item">
+								<h2 class="accordion-header py-4 border-top">
+									<button class="fs-3 accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={'#collapse_' + index} aria-expanded="false" aria-controls="flush-collapseOne">
+										<span class="col-sm-10 col-md-8 pe-5 pe-lg-0">{item.title}</span>
+									</button>
+								</h2>
+								<div id={'collapse_' + index} class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+									<div class="accordion-body">
+										<ul class="list-unstyled py-4 mb-0 text-secondary">
+										{
+											item.content.map((i) => (
+												<li class="fs-4 mb-4">{i}</li>
+											))
+										}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						))}
+					</div>
+				</div>
+			</div>	
+		</Drawer>
+
+		<Drawer drawerTitle="Prince Collection Travel Agency" drawerId="C_Drawer" drawerAriaLabel="Prince Collection Travel Agency">
+				<div class="row">
+					<div class="col-lg-10 offset-lg-1 d-flex flex-column justify-content-center align-items-center text-center p-5">
+						<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3">{data.faq.concierge_faq_hero.badge}</span>
+						<h1 class="display-2 fw-bold lh-1 mb-2 mt-3"><Fragment set:html={data.faq.concierge_faq_hero.title} /></h1>
+						<p class="col-md-8 fs-5 mt-3 mb-0">{data.faq.concierge_faq_hero.content}</p>
+					</div>
+					<div class="col-lg-10 offset-lg-1">
+						<div class="accordion accordion-flush" id="faqAccordion">
+						{
+						data.faq.concierge.map((item, index) => (
+						<div class="accordion accordion-flush px-3" id="faqAccordion">
+							<div class="accordion-item">
+								<h2 class="accordion-header py-4 border-top">
+									<button class="fs-3 accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={'#collapse_' + index} aria-expanded="false" aria-controls="flush-collapseOne">
+										<span class="col-sm-10 col-md-8 pe-5 pe-lg-0">{item.title}</span>
+									</button>
+								</h2>
+								<div id={'collapse_' + index} class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+									<div class="accordion-body">
+										<ul class="list-unstyled py-4 mb-0 text-secondary">
+										{
+											item.content.map((i) => (
+												<li class="fs-4 mb-4">{i}</li>
+											))
+										}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						))}
+					</div>
+				</div>
+			</div>	
+		</Drawer>
+
+	</div><!--end container -->
+</Layout>
+
+<style>
+	.accordion h2 {
+		font-family: 'Inter tight', Arial, Helvetica, sans-serif
+	}
+	.accordion-button:not(.collapsed) {
+		background: inherit;
+		color: #a1655c;
+	}
+	.accordion-button:focus {
+    z-index: 3;
+    border-color: none;
+    outline: 0;
+    box-shadow: none;
+}
+</style>
+

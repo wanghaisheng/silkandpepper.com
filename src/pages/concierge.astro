@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/sitecontent.json';
+import BookingFormConcierge from '../components/BookingFormConcierge.astro';
+---
+
+<Layout title={data.concierge.meta.title} description={data.concierge.meta.description}>
+<div class="container-fluid px-0 pt-3 text-body-secondary">
+	<div class="row min-vh-500 pt-3" data-aos="fade">
+		<div class="col-lg-12 d-flex flex-column justify-content-center align-items-center min-vh-500 text-center p-5 mb-0 mb-lg-4 mt-4 mt-lg-0">
+			<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3">{data.concierge.hero.badge}</span>
+			<h1 class="display-3 fw-bold lh-1 mb-2 mt-3"><Fragment set:html={data.concierge.hero.title}/></h1>
+			<p class="col-lg-6 col-md-8 fs-5 text-body-secondary mt-3 mb-4">{data.concierge.hero.content}</p>
+			<a href="#book">
+				<button class="btn btn-pc fw-bold rounded-pill px-4 shadow">{data.concierge.hero.button}</button>
+			</a>
+		</div>
+	</div>
+
+	<!-- logos -->
+
+	<div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 p-5 bg-light" data-aos="fade-up">
+		{
+			data.concierge.logos.map((item, index) => (
+			<div class="col d-flex my-auto text-center p-3" style="filter: brightness(0);">
+				<img src="" data-src={item.url} style={index === 2 || index === 3 || index === 5 ? 'width: 120px;' : 'width: 140px'} alt={item.alt}>
+			</div>
+		))}
+	</div>
+
+	<div class="row row-cols-1 row-cols-lg-2 bg-pc-10 pt-4 pb-0 pb-lg-4" data-aos="fade-up">
+		<div class="col d-flex flex-column justify-content-center align-items-start text-start p-5">
+			<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3" data-aos="fade-up" data-aos-delay="200">{data.concierge.section1.badge}</span>
+			<h2 class="display-4 fw-bold lh-1 mb-2 mt-4" data-aos="fade-up" data-aos-delay="400"><Fragment set:html={data.concierge.section1.title}/></h2>
+			<p class="text-body-secondary fs-5 my-3" data-aos="fade-up" data-aos-delay="600">{data.concierge.section1.content}</p>
+		</div>
+		<div class="col pt-0 pt-lg-5 pb-0 pb-lg-5 ps-0 ps-lg-5 pe-0" data-aos="fade-up" data-aos-delay="800">
+			<img class="w-100 h-100 object-fit min-vh-500 rounded-4 shadow" src="" data-src="/images/general/pc-bora-bora.jpg" alt="An image of the St. Regis hotel in Bora Bora"/>
+		</div>
+	</div>
+
+	<div class="row g-3 p-5">
+		<div class="col-lg-12 d-flex flex-column justify-content-center align-items-center text-center px-0 px-lg-5 pb-3 pb-lg-5">
+			<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3" data-aos="fade-up">{data.concierge.section2.badge}</span>
+			<h2 class="display-4 fw-bold lh-1 mb-2 mt-3" data-aos="fade-up" data-aos-delay="200"><Fragment set:html={data.concierge.section2.title} /></h2>
+			<p class="text-body-secondary col-md-8 fs-5 my-3" data-aos="fade-up" data-aos-delay="400">{data.concierge.section2.content}</p>
+		</div>
+
+		{data.concierge.section2.list.map((item, index) => (
+			<div class="d-none d-lg-flex col-lg-4">
+				<div class="p-5 border rounded-4 bg-pc-dark text-light border shadow" style="min-height: 420px" data-aos="fade-up" data-aos-delay={index * 100}>
+					<i class:list={["bi text-pc-dark-10 fs-2 px-3 py-2 shadow rounded-3 bg-pc-dark-80", item.icon]} data-aos="fade-up" data-aos-delay={index * 100}></i>
+					<h4 class="fw-bold mb-3 mt-4" data-aos="fade-up" data-aos-delay={index * 100}>{item.title}</h4>
+					<p data-aos="fade-up" data-aos-delay={index * 100}>{item.content}</p>
+				</div>
+			</div>
+			<div class="d-flex d-lg-none col-lg-4">
+				<div class="p-5 border rounded-4 bg-pc-dark text-light border shadow" data-aos="fade-up" data-aos-delay={index * 100}>
+					<i class:list={["bi text-pc-dark-10 fs-2 px-3 py-2 shadow rounded-3 bg-pc-dark-80", item.icon]} data-aos="fade-up" data-aos-delay={index * 100}></i>
+					<h4 class="fw-bold mb-3 mt-4" data-aos="fade-up" data-aos-delay={index * 100}>{item.title}</h4>
+					<p data-aos="fade-up" data-aos-delay={index * 100}>{item.content}</p>
+				</div>
+			</div>
+		))}
+	</div>
+
+	<div class="py-0 py-lg-4"></div>
+
+	<div class="row" data-aos="fade-up">
+		<div class="col-lg-12">
+			<div class="col-lg-12 p-0">
+				<img class="w-100 object-fit" style="aspect-ration: 16/9; height: 60vh;" src="" data-src="/images/general/pc-hotel-palm-trees.jpeg" alt="Luxury hotel with pool and palm trees" />
+			</div>
+		</div>
+	</div>
+
+<!--	<div class="row row-cols-1 g-5 px-5 pt-5 pb-3">
+		<div class="col">
+			<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3" data-aos="fade-up">{data.concierge.section3.badge}</span>
+			<h2 class="display-4 fw-bold my-3" data-aos="fade-up" data-aos-delay="200">{data.concierge.section3.title}</h2>
+			<p class="col-md-11 col-lg-8 fs-5 text-body-secondary" data-aos="fade-up" data-aos-delay="400">{data.concierge.section3.content}</p>
+		</div>
+	</div>-->
+
+	<!--guarantee-->
+
+	<div class="py-1 py-lg-3"></div>
+
+	<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5 g-3 p-5 bg-gold-1" data-aos="fade-up">
+	
+		{data.concierge.section3.list.map((item, index) => (
+
+			<div class="col">
+				<div class:list={["p-5 rounded-5 shadow-lg h-100 w-100", index === 0 ? 'd-flex flex-column justify-content-end align-items-start bg-pc-dark text-light border' : 'bg-pc']}>
+				<h2 class="text-pc-dark fw-bold" data-aos="fade-up" data-aos-delay={index * 100}>{item.badge}</h2>
+				<h4 class:list={["mt-1 mb-3 fw-900", index === 0 ? 'fs-2 lh-1' : '']} data-aos="fade-up" data-aos-delay={index * 100}><Fragment set:html={item.title} /></h4> 
+				<p class:list={[index === 0 ? "d-none" : '']} data-aos="fade-up" data-aos-delay={index * 100}>{item.content}</p>
+				</div>
+			</div>		
+
+		))}
+	</div>
+	<div id="book" class="py-1 py-lg-3"></div>
+
+	<!--book-->
+
+
+	<div class="row min-vh-100 bg-pc-dark bg-gold-1" data-aos="fade-up">
+		<div class="col-lg-8 offset-lg-2 d-flex flex-column justify-content-center align-items-center min-vh-50 text-center p-5 mt-4 mt-lg-0">
+			<span class="badge rounded-pill fw-bold text-bg-dark py-2 px-3" data-aos="fade-up" data-aos-delay="200">{data.concierge.book.badge}</span>
+			<h1 class="display-4 fw-bold text-pc lh-1 mb-2 mt-3" data-aos="fade-up" data-aos-delay="400">{data.concierge.book.title}</h1>
+			<p class="fs-5 text-pc-light mt-3 mb-0" data-aos="fade-up" data-aos-delay="600">{data.concierge.book.content}</p>
+		</div>
+		<div class="container px-0 px-lg-5" data-aos="fade-up" data-aos-delay="800">
+			<div class="row px-5 pb-5">
+				<div class="col-lg-8 offset-lg-2 d-flex flex-column justify-content-center align-items-start">
+					<BookingFormConcierge bookingForm="bg-pc-dark-80 p-4 p-lg-5 rounded-5 shadow" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row bg-pc-80 py-5 text-body-secondary" data-aos="fade-up">
+		<div class="col-lg-8 offset-lg-2 p-5 text-center">
+			<span class="badge rounded-pill fw-bold bg-pc-dark text-pc-light py-2 px-3" data-aos="fade-up">{data.home.newsletter_cta.badge}</span>
+			<h2 class="display-4 fw-bold lh-1" data-aos="fade-up" data-aos-delay="200"><Fragment set:html={data.home.newsletter_cta.title}/></h2>
+			<p class="fs-5 my-3 col-md-8 mx-auto" data-aos="fade-up" data-aos-delay="400">{data.home.newsletter_cta.content}</p>
+			<a href="/newsletter">
+				<button class="btn bg-pc-dark text-light rounded-pill px-4 shadow" data-aos="fade-up" data-aos-delay="600">{data.home.newsletter_cta.button}</button>
+			</a>
+		</div>
+	</div>
+</Layout>

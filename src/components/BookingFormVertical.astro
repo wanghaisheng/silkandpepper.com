@@ -1,0 +1,416 @@
+---
+const { bookingContainer, bookingForm } = Astro.props;
+---
+
+
+<!-- NEW FORM -->
+
+<!-- <script is:inline src="../js/validation.js"></script> -->
+
+    <script src="../js/validation.js"></script>
+
+  <div class="zf-templateWidth">
+    <form action='https://forms.zohopublic.com/princecollection/form/TAHotelPCNew/formperma/-FRBiGYs-ugLWaR7qdyo2x9MDKxGbBylwzEdx43gum8/htmlRecords/submit' name='form' method='POST' onSubmit='javascript:document.charset="UTF-8"; return zf_ValidateAndSubmit();' accept-charset='UTF-8' enctype='multipart/form-data' id='form'><input type="hidden" name="zf_referrer_name" value=""><!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
+  <input type="hidden" name="zf_redirect_url" value=""><!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
+  <input type="hidden" name="zc_gad" value=""><!-- If GCLID is enabled in Zoho CRM Integration, click details of AdWords Ads will be pushed to Zoho CRM -->
+  <input type="hidden" name="utm_source" value=""/>
+  <input type="hidden" name="utm_medium" value=""/>
+  <input type="hidden" name="utm_campaign" value=""/>
+  <input type="hidden" name="utm_term" value=""/>
+  <input type="hidden" name="utm_content" value=""/>
+  <input type="hidden" name="gclid" value=""/>
+  <input type="hidden" name="referrername" value=""/>
+
+  <div class="zf-templateWrapper"><!---------template Header Starts Here---------->
+  <!-- <ul class="zf-tempHeadBdr">
+      <li class="zf-tempHeadContBdr"><h2 class="zf-frmTitle"><em>TA Hotel (PC) New</em></h2>
+    <p class="zf-frmDesc"></p>
+    <div class="zf-clearBoth"></div></li>
+  </ul>-------template Header Ends Here-------- -->
+  <!---------template Container Starts Here---------->
+  <div class="zf-subContWrap zf-topAlign">
+  <ul class:list={["row list-unstyled g-4 p-4 rounded-3", bookingForm]}>
+    <!---------Single Line Starts Here---------->
+    <li class="zf-tempFrmWrapper zf-small col-lg-6">
+      <label class="zf-labelName"> 
+      First Name 
+      <em class="zf-important">*</em>
+      </label>
+      <div class="zf-tempContDiv">
+      <span> 
+        <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine1" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" required>
+
+        <!-- <input type="text" name="SingleLine1" checktype="c1" value="" maxlength="255" fieldType=1 placeholder=""/> -->
+      </span> 
+        <p id="SingleLine1_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+      </div><div class="zf-clearBoth"></div>
+    </li>
+<!---------Single Line Ends Here---------->
+  <!---------Single Line Starts Here---------->
+  <li class="zf-tempFrmWrapper zf-small col-lg-6">
+    <label class="zf-labelName"> 
+    Last Name 
+    <em class="zf-important">*</em>
+    </label>
+  <div class="zf-tempContDiv">
+    <span> 
+      <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" />
+
+      <!-- <input type="text" name="SingleLine" checktype="c1" value="" maxlength="255" fieldType=1 placeholder=""/> -->
+    </span> 
+    <p id="SingleLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+  </div><div class="zf-clearBoth"></div></li><!---------Single Line Ends Here---------->
+  <!---------Email Starts Here---------->  
+  <li class="zf-tempFrmWrapper zf-small col-lg-6">
+    <label class="zf-labelName"> 
+      Email 
+      <em class="zf-important">*</em>
+    </label>
+    <div class="zf-tempContDiv">
+      <span> 
+        <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" fieldType=9 type="text" maxlength="255" name="Email" checktype="c5" value="" placeholder="name@example.com" required> 
+
+        <!-- <input fieldType=9  type="text" maxlength="255" name="Email" checktype="c5" value="" placeholder=""/> -->
+      </span> 
+      <p id="Email_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+    </div>
+  <div class="zf-clearBoth"></div>
+  </li><!---------Email Ends Here---------->  
+  <!---------Single Line Starts Here---------->
+  <li class="zf-tempFrmWrapper zf-small col-lg-6">
+    <label class="zf-labelName"> 
+    Destination City 
+    <!-- <em class="zf-important">*</em> -->
+    </label>
+    <div class="zf-tempContDiv">
+      <span> 
+        <input type="text" class="form-control w-100" aria-label="Destination city" aria-describedby="Destination city input" name="SingleLine2" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="(e.g. Dubai, Barcelona, London...)" required>
+
+        <!-- <input type="text" name="SingleLine2" checktype="c1" value="" maxlength="255" fieldType=1 placeholder=""/> -->
+      </span> 
+      <p id="SingleLine2_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+    </div>
+    <div class="zf-clearBoth"></div>
+  </li><!---------Single Line Ends Here---------->
+
+  <!---------Date Starts Here----------> 
+  <li class="zf-tempFrmWrapper zf-date col-lg-6">
+    <label class="zf-labelName"> 
+    Check-in Date 
+    <!-- <em class="zf-important">*</em> -->
+    </label>
+    <div class="zf-tempContDiv">
+    <span>
+
+      <!-- <input type="date" id="checkIn" class="form-control w-100" aria-label="Check-in date" aria-describedby="inputGroup-sizing-default" name="Date" checktype="c4" value="" maxlength="25" placeholder="Select a date from the calendar icon" required /> -->
+
+      <div class="col-md-6 input-group">
+        <input type="date" name="Date" class="form-control position-relative" value="" aria-label="Check-in date" aria-describedby="inputGroup-sizing-default" name="Date" checktype="c4" value="" placeholder="Select a date from the calendar icon" required >
+        <label class="input-group-addon btn" for="testdate">
+          <i class="bi bi-calendar-date fs-5"></i>
+        </label>                    
+      </div>
+
+      <!-- <div class="input-group mb-4">
+        <input type="date" class="date-icon datepicker_input form-control position-relative" aria-label="Check-in date" aria-describedby="inputGroup-sizing-default" name="Date" checktype="c4" value="" placeholder="Select a date from the calendar icon" required >
+      </div> -->
+
+
+      <!-- datepicker <input class="form-control" type="date" class="form-control w-100" aria-label="Check-in date picker" aria-describedby="inputGroup-sizing-default" name="Date" checktype="c4" value="" maxlength="25" placeholder="(DD-MMM-YYYY)" required /> -->
+
+      <!-- <input type="text" name="Date" checktype="c4" value="" maxlength="25" placeholder=""/><label>dd-MMM-yyyy</label>  -->
+    </span>
+    <div class="zf-clearBoth"></div>
+    <p id="Date_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+    </div>
+    <div class="zf-clearBoth"></div>
+  </li><!---------Date Ends Here----------> 
+
+  <!---------Date Starts Here----------> 
+  <li class="zf-tempFrmWrapper zf-date col-lg-6">
+    <label class="zf-labelName"> 
+  Check-out Date 
+  <!-- <em class="zf-important">*</em> -->
+  </label>
+  <div class="zf-tempContDiv">
+    <span>
+      <div class="col-md-6 input-group">
+        <input type="date" name="Date1" class="form-control position-relative" value="" aria-label="Check-out date" aria-describedby="Check-out date" checktype="c4" value="" placeholder="Select a date from the calendar icon" required >
+        <label class="input-group-addon btn" for="testdate">
+          <i class="bi bi-calendar-date fs-5"></i>
+        </label>                    
+      </div>
+
+      <!-- solution for needing to convert the HTML5 datepicker format
+      convert the date and append to an invisible input with the actual name field to submit
+      visual date on-screen is for display only -->
+
+      <!-- <input type="date" class="form-control w-100 position-relative" placeholder="Select a date from the calendar icon" checktype="c4" maxlength="25" placeholder="Select a date from the calendar icon" aria-label="Check-out date" aria-describedby="inputGroup-sizing-default" value="" required /> -->
+      <!-- <input type="text" id="dateInput" class="visibility-hidden" name="Date1" checktype="c4" placeholder="(e.g. 1-Dec-2025)" required /> -->
+
+      <!-- <input type="text" name="Date1" checktype="c4" value="" maxlength="25" placeholder=""/><label>dd-MMM-yyyy</label>  -->
+    </span>
+      <div class="zf-clearBoth"></div>
+      <p id="Date1_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+    </div>
+    <div class="zf-clearBoth"></div>
+</li><!---------Date Ends Here----------> 
+
+  <!---------Single Line Starts Here---------->
+  <li class="zf-tempFrmWrapper zf-small col-lg-6">
+    <label class="zf-labelName"> 
+    Number of Rooms & Room Type Needed 
+    <!-- <em class="zf-important">*</em> -->
+    </label>
+    <div class="zf-tempContDiv">
+    <span> 
+      <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine3" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="(e.g. 2 rooms, suite...)" required>
+
+      <!-- <input type="text" name="SingleLine3" checktype="c1" value="" maxlength="255" fieldType=1 placeholder=""/> -->
+    </span> 
+      <p id="SingleLine3_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+    </div>
+    <div class="zf-clearBoth"></div>
+  </li><!---------Single Line Ends Here---------->
+
+  <!---------Single Line Starts Here---------->
+  <li class="zf-tempFrmWrapper zf-small col-lg-6">
+    <label class="zf-labelName"> 
+      How many people are travelling? 
+      <!-- <em class="zf-important">*</em> -->
+      </label>
+      <div class="zf-tempContDiv">
+      <span> 
+        <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine4" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="(Total # of adults and children + age)" required>
+
+        <!-- <input type="text" name="SingleLine4" checktype="c1" value="" maxlength="255" fieldType=1 placeholder=""/> -->
+      </span> 
+      <p id="SingleLine4_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+      </div>
+      <div class="zf-clearBoth"></div>
+  </li><!---------Single Line Ends Here---------->
+
+    <!---------Single Line Starts Here---------->
+    <li class="zf-tempFrmWrapper zf-small col-lg-6">
+      <label class="zf-labelName"> 
+      Is there a specific hotel you'd like to book? 
+      </label>
+      <div class="zf-tempContDiv">
+        <span> 
+          <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine8" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="(e.g.  Rosewood Hamilton, Reid's Palace, Belmond...)">
+<!--           
+          <input type="text" name="SingleLine8" checktype="c1" value="" maxlength="255" fieldType=1 placeholder=""/> -->
+      </span> 
+      <p id="SingleLine8_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+      </div>
+      <div class="zf-clearBoth"></div>
+    </li><!---------Single Line Ends Here---------->
+
+      <!---------Single Line Starts Here---------->
+  <li class="zf-tempFrmWrapper zf-small col-lg-6">
+    <label class="zf-labelName"> 
+      Do you have elite status with any hotel chains? 
+      </label>
+      <div class="zf-tempContDiv">
+      <span> 
+        <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine7" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="(e.g. Marriott, Hilton, Hyatt...)">
+
+        <!-- <input type="text" name="SingleLine7" checktype="c1" value="" maxlength="255" fieldType=1 placeholder=""/> -->
+      </span> 
+        <p id="SingleLine7_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+      </div>
+      <div class="zf-clearBoth"></div>
+  </li><!---------Single Line Ends Here---------->
+
+  <!---------Radio Starts Here---------->    
+    <li class="zf-radio zf-tempFrmWrapper zf-oneColumns col-md-6 col-lg-6">
+      <label class="zf-labelName">Approximate price range per night (USD)
+      <!-- <em class="zf-important">*</em> -->
+      </label>
+      <div class="zf-tempContDiv">
+
+        <!-- <select class="zf-form-sBox" name="Dropdown1" checktype="c1" >
+          <option selected="true" value="-Select-">-Select-</option>
+          <option value="Under&#x20;&#x24;250">Under &#x24;250</option>
+          <option value="&#x24;250&ndash;500">&#x24;250&ndash;500</option>
+          <option value="&#x24;500&ndash;750">&#x24;500&ndash;750</option>
+          <option value="&#x24;750&#x2b;">&#x24;750&#x2b;</option>
+          </select><p id="Dropdown1_error" class="zf-errorMessage" style="display:none;">Invalid value</p> -->
+
+        <select name="Dropdown1" class="zf-form-sBox form-select mb-3 bg-pc-dark border-0 border-bottom rounded-0 text-pc" aria-label="Currency select" checktype="c1">
+          <!-- <option selected>-Select-</option> -->
+          <option selected="true" value="-Select-">-Select-</option>
+          <option value="Under&#x20;&#x24;250">Under &#x24;250</option>
+          <option value="&#x24;250&ndash;500">&#x24;250&ndash;500</option>
+          <option value="&#x24;500&ndash;750">&#x24;500&ndash;750</option>
+          <option value="&#x24;750&#x2b;">&#x24;750&#x2b;</option>
+        </select>
+      <p id="Dropdown1_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+      </div>
+      <div class="zf-clearBoth"></div>
+    </li><!---------Radio Ends Here---------->  
+
+  <!---------Dropdown Starts Here---------->
+  <li class="zf-tempFrmWrapper zf-small col-lg-6">
+    <label class="zf-labelName">
+      What currency would you like to be quoted in?
+      <!-- <em class="zf-important">*</em> -->
+      </label>
+      <div class="zf-tempContDiv">
+        <select name="Dropdown" class="zf-form-sBox form-select mb-3 bg-pc-dark border-0 border-bottom rounded-0 text-pc" aria-label="Currency select" checktype="c1">
+          <option selected>-Select-</option>
+          <option value="CAD">CAD</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="Local&#x20;Currency">Local Currency</option>
+        </select>
+
+      <!-- <select class="zf-form-sBox" name="Dropdown" checktype="c1">
+      <option selected="true" value="-Select-">-Select-</option>
+      <option value="CAD" selected>CAD</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="Local&#x20;Currency">Local Currency</option>
+      </select> -->
+      <p id="Dropdown_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+      </div>
+      <div class="zf-clearBoth"></div>
+    </li><!---------Dropdown Ends Here---------->
+
+  <!---------Multiple Line Starts Here---------->
+  <li class="zf-tempFrmWrapper zf-small col-lg-12">
+      <label class="zf-labelName"> 
+    Additional Requests 
+    </label>
+    <div class="zf-tempContDiv">
+    <span> 
+      <input type="text" class="form-control w-100 py-3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="MultiLine" checktype="c1" value="" maxlength="65255" fieldType=1 placeholder="(e.g. Room type, special occasion, budget...)">
+
+      <!-- <textarea name="MultiLine" checktype="c1" maxlength="65535" placeholder=""></textarea>  -->
+    </span>
+      <p id="MultiLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+    </div>
+    <div class="zf-clearBoth"></div>
+  </li><!---------Multiple Line Ends Here---------->
+  <li class="mb-3 mb-lg-0">
+    <button class="btn btn-pc d-none d-md-block px-4 py-1 fs-5 rounded-5">Submit <i class="bi bi-arrow-up-right-circle-fill text-pc-dark fs-4 ms-2" role="button"></i></button>
+    <button class="btn btn-dark d-block d-md-none w-100 px-4 py-1 fs-5 rounded-5">Submit <i class="bi bi-arrow-up-right-circle-fill text-pc-dark fs-4 ms-2" role="button"></i></button>
+  </li>
+  </ul>
+
+</div><!---------template Container Starts Here---------->
+<!-- submit -->
+  <!-- <ul class="list-unstyled">
+    <li class="mb-3 mb-lg-0">
+      <button class="btn btn-pc d-none d-md-block px-4 py-1 fs-5 rounded-5">Submit <i class="bi bi-arrow-up-right-circle-fill text-pc-dark fs-4 ms-2" role="button"></i></button>
+      <button class="btn btn-dark d-block d-md-none w-100 px-4 py-1 fs-5 rounded-5">Submit <i class="bi bi-arrow-up-right-circle-fill text-pc-dark fs-4 ms-2" role="button"></i></button>
+    </li>
+
+    <li class="zf-fmFooter"><button class="zf-submitColor" >Submit</button></li>
+  </ul> -->
+</div><!-- 'zf-templateWrapper' ends -->
+</form>
+</div><!-- 'zf-templateWidth' ends -->
+
+  <script type="text/javascript">var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[-](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)[-](?:(?:19|20)[0-9]{2})$");
+  var zf_MandArray = [ "SingleLine1", "SingleLine", "Email", "SingleLine2", "SingleLine3", "Date", "Date1", "SingleLine4", "Dropdown1", "Dropdown"]; 
+  var zf_FieldArray = [ "SingleLine1", "SingleLine", "Email", "SingleLine2", "SingleLine3", "Date", "Date1", "SingleLine4", "Dropdown1", "SingleLine8", "SingleLine7", "Dropdown", "MultiLine"]; 
+  var isSalesIQIntegrationEnabled = false;
+  var salesIQFieldsArray = [];
+
+// working: 
+// get the datepicker ID from the input="date" 
+// listen to the change event 
+// convert datepicker date to DD-MMM-YYYY desired format for zoho
+// make sure date is manually parsed first to return the correct day i.e. UTC
+// https://www.phind.com/search?cache=lej34c3hc0sorlhmv3bc8nml
+// https://www.phind.com/search?cache=krraerik8glq1ig4yplq4ugh
+// Assuming you have a date string from the HTML5 datepicker in the format 'YYYY-MM-DD'
+// var dateString = '2024-03-18'; // Example date from datepicker
+// function parseDate(dateString) {
+//     const parts = dateString.split('-');
+//     return new Date(parts[0], parts[1] - 1, parts[2]);
+// }
+
+// document.getElementById('datePicker').addEventListener('change', function(e) {
+//     const selectedDate = parseDate(e.target.value);
+//     var day = selectedDate.getDate();
+//     var monthIndex = selectedDate.getMonth();
+//     var year = selectedDate.getFullYear();
+//     var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+//     var formattedDate = day + '-' + monthNames[monthIndex] + '-' + year;
+//     document.getElementById('dateInput').value = formattedDate;
+// });
+  </script>
+
+<style scoped>
+  /* .date-icon {
+  padding-left: 25px;
+  margin-right: 20px;
+  background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat left;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'><path d='M6.445 11.688V6.354h-.633A13 13 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23'/><path d='M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z'/></svg>");
+  background-size: 25px;
+} */
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 30px;
+    width: 100px;
+    width: auto;
+}
+
+    input, input:focus {
+        border: 0;
+        background: transparent;
+        border-bottom: 1px solid #fbe3de;
+        border-radius: 0;
+        box-shadow: none;
+        color: #fff;
+    }
+    select, 
+    select:focus {
+        background: transparent;
+        box-shadow: none;
+    }
+    label {
+        color: #fbe3de;
+        font-weight: light;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    textarea {
+        background: transparent;
+    }
+    input::placeholder {
+       font-size: 14px;
+        color: #f0beb4;
+        opacity: 1; /* Firefox */
+    }
+    /* Change the white to any color */
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+} */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+}
+/*Change text in autofill textbox*/
+input:-webkit-autofill{
+    -webkit-text-fill-color: white !important;
+}
+
+</style>

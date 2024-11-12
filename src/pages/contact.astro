@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/sitecontent.json';
+---
+    <!-- Change or deletion of the name attributes in the input tag will lead to empty values on record submission-->
+    <Layout title="Prince Collection | Contact Us" description="Contact Prince Collection to discuss your next trip or travel arrangements, find out more about our process, or get more information.">
+        <div class="container-fluid px-0 bg-timberwolf">
+			<div class="row min-vh-100">
+				<div class="col-lg-6 d-flex flex-column justify-content-end align-items-start min-vh-50 text-start p-5 mb-0 mb-lg-4 mt-5 mt-lg-0">
+                    <!-- <span class="badge rounded-pill fw-bold text-bg-dark py-2 px-3">{data.contact.badge}</span> -->
+					<h1 class="display-4 fw-bold lh-1 mb-2 mt-3"><Fragment set:html={data.contact.title} /></h1>
+					<p class="fs-5 mt-3 mb-0">{data.contact.content}</p>
+				</div>
+                <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center p-5 position-relative" style="background:
+                linear-gradient(135deg,#0000 18.75%,#d4d7cd 0 31.25%,#0000 0),
+                repeating-linear-gradient(45deg,#d4d7cd -6.25% 6.25%,#cbcdc4 0 18.75%); background-size: 64px 64px;">
+                    <form name="contact" method="POST" data-netlify="true" class="w-100 p-5 rounded-4 shadow bg-timberwolf position-relative">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control bg-timberwolf border-0 border-bottom border-secondary rounded-0" id="exampleFormControlInput1" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput2" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control bg-timberwolf border-0 border-bottom border-secondary rounded-0" id="exampleFormControlInput2" placeholder="name@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Topic</label>
+                            <input type="text" name="subject" class="form-control bg-timberwolf border-0 border-bottom border-secondary rounded-0" id="exampleFormControlInput1" placeholder="i.e. Hotels, travel planning, flights..." required>
+                        </div>
+                          <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                            <textarea name="message" class="form-control bg-timberwolf border-0 border-bottom rounded-0 border-secondary" id="exampleFormControlTextarea1" rows="2" placeholder="Your message"></textarea>
+                          </div>
+                          <button class="btn btn-dark d-none d-md-block rounded-5 px-4 mt-2" role="button">Submit</button>
+                          <button class="btn btn-dark d-block d-md-none w-100 rounded-5 mt-2 px-4" role="button">Submit</button>
+
+                      </form>
+                </div>
+            </div>
+
+        </div>
+    </Layout>
+
+    <style>
+
+        label {
+            font-family: 'Inter tight';
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    input, 
+    input:focus {
+        border: 0;
+        background: transparent;
+        border-bottom: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .form-control:focus {
+        color: var(--bs-body-color);
+        background-color: transparent;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: none;
+    }
+    select {
+        background: transparent;
+        box-shadow: none;
+    }
+    textarea {
+        background: transparent;
+    }
+    input::placeholder,
+    textarea::placeholder {
+       font-size: 14px;
+        opacity: 1; /* Firefox */
+    }
+    </style>

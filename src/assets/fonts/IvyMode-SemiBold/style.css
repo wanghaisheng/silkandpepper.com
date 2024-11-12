@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Ivy Mode';
+    src: local('Ivy Mode Semi Bold'), local('Ivy-Mode-Semi-Bold'),
+        url('IvyMode-SemiBold.woff2') format('woff2'),
+        url('IvyMode-SemiBold.woff') format('woff'),
+        url('IvyMode-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }

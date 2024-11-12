@@ -1,0 +1,24 @@
+---
+const { modalTitle, modalId, modalStyles, modalSize, modalBody } = Astro.props;
+---
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={'#' + modalId}>
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id={modalId} tabindex="-1" aria-labelledby={modalId} aria-hidden="true">
+    <div class:list={["modal-dialog modal-dialog-centered", modalSize]}>
+      <div class:list={["modal-content", modalStyles]}>
+        <div class="modal-header d-none border-0">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{modalTitle}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class:list={["modal-body p-5", modalBody]}>
+            <i class="bi bi-x-circle-fill position-absolute top-0 end-0 fs-3 m-3 text-pc-dark" role="button" data-bs-dismiss="modal" aria-label="Close"></i>
+          <slot />
+        </div>
+      </div>
+    </div>
+  </div>

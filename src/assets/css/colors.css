@@ -1,0 +1,169 @@
+/* https://www.learnui.design/tools/data-color-picker.html#single */
+
+:root {
+    --pc: #f0beb4;
+    --pc-dark: #a1655c;
+    --pc-light: #f6f1eb;
+    /* CSS menu palette HEX */
+    --melon: #f0beb4ff;
+    --vanilla: #f0eab4ff;
+    --dutch-white: #f0ddbfff;
+    --pale-dogwood: #efd0caff;
+    --timberwolf: #d4d7cdff;
+    --tiffany-blue: #b8ddcfff;
+    --periwinkle: #cac0f0ff;
+    --blue-gray: #6f9ed6ff;
+    --ucla-blue: #52749dff;
+    --charcoal: #474e57ff;
+    --light-grey: hsl(60, 12%, 90%);
+}
+
+.bg-pc-light {
+    background: var(--pc-light);
+}
+
+.text-pc-light {
+    color: var(--pc-light);
+}
+
+/* pc dark brand */
+
+.text-pc-dark {
+    color: var(--pc-dark);
+}
+.text-pc-dark-80 {
+    color: #b47b6e;
+}
+.text-pc-dark-60 {
+    color: #c69081;
+}
+.text-pc-dark-40 {
+    color: #d9a794;
+}
+.text-pc-dark-20 {
+    color: #ecbea9;
+}
+.text-pc-dark-10 {
+    color: #ffd5bf;
+}
+
+/* bg */
+
+.bg-pc-dark {
+    background: var(--pc-dark);
+}
+.bg-pc-dark-80 {
+    background: #b47b6e;
+}
+.bg-pc-dark-60 {
+    background: #c69081;
+}
+.bg-pc-dark-40 {
+    background: #d9a794;
+}
+.bg-pc-dark-20 {
+    background: #ecbea9;
+}
+.bg-pc-dark-10 {
+    background: #ffd5bf;
+}
+
+/* pc brand */
+
+.text-pc {
+    color: var(--pc);
+}
+.text-pc-80 {
+    color: #f2c5bc;
+}
+.text-pc-60 {
+    color: #f5cdc5;
+}
+.text-pc-40 {
+    color: #f7d4cd;
+}
+.text-pc-20 {
+    color: #f9dcd5;
+}
+.text-pc-10 {
+    color: #fbe3de;
+}
+
+/* bg */
+
+.bg-pc {
+    background: var(--pc);
+}
+.bg-pc-80 {
+    background: #f2c5bc;
+}
+.bg-pc-60 {
+    background: #f5cdc5;
+}
+.bg-pc-40 {
+    background: #f7d4cd;
+}
+.bg-pc-20 {
+    background: #f9dcd5;
+}
+.bg-pc-10 {
+    background: #fbe3de;
+}
+
+/* general */
+
+.text-chestnut {
+    color: #5D2F27;
+}
+.bg-light-grey {
+    background: #EFEFEF;
+}
+.text-light-grey {
+   color: #EFEFEF;
+}
+
+/* nav modal */
+
+.bg-vanilla {
+    background: var(--vanilla);
+}
+.bg-dutch-white {
+    background: var(--dutch-white);
+}
+.bg-pale-dogwood {
+    background: var(--pale-dogwood);
+}
+.bg-tiffany-blue {
+    background-color: var(--tiffany-blue);
+}
+.bg-periwinkle {
+    background: var(--periwinkle);
+}
+.bg-timberwolf {
+    background: var(--timberwolf);
+}
+
+/* sidenav drawer */
+
+.bg-indigo {
+    background: #0c1e35;
+}
+.text-indigo {
+    color: #0c1e35;
+}
+.text-lightblue {
+    color: #7d84ab
+}
+.bg-lightblue {
+    background: #7d84ab;
+}
+
+.bg-gold-1 {
+    /* background-color: transparent; */
+    background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox='0 0 84 84' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23cebd9d' fill-opacity='0.15'%3E%3Cpath d='M84 23c-4.417 0-8-3.584-8-7.998V8h-7.002C64.58 8 61 4.42 61 0H23c0 4.417-3.584 8-7.998 8H8v7.002C8 19.42 4.42 23 0 23v38c4.417 0 8 3.584 8 7.998V76h7.002C19.42 76 23 79.58 23 84h38c0-4.417 3.584-8 7.998-8H76v-7.002C76 64.58 79.58 61 84 61V23zM59.05 83H43V66.95c5.054-.5 9-4.764 9-9.948V52h5.002c5.18 0 9.446-3.947 9.95-9H83v16.05c-5.054.5-9 4.764-9 9.948V74h-5.002c-5.18 0-9.446 3.947-9.95 9zm-34.1 0H41V66.95c-5.053-.502-9-4.768-9-9.948V52h-5.002c-5.184 0-9.447-3.946-9.95-9H1v16.05c5.053.502 9 4.768 9 9.948V74h5.002c5.184 0 9.447 3.946 9.95 9zm0-82H41v16.05c-5.054.5-9 4.764-9 9.948V32h-5.002c-5.18 0-9.446 3.947-9.95 9H1V24.95c5.054-.5 9-4.764 9-9.948V10h5.002c5.18 0 9.446-3.947 9.95-9zm34.1 0H43v16.05c5.053.502 9 4.768 9 9.948V32h5.002c5.184 0 9.447 3.946 9.95 9H83V24.95c-5.053-.502-9-4.768-9-9.948V10h-5.002c-5.184 0-9.447-3.946-9.95-9zM50 50v7.002C50 61.42 46.42 65 42 65c-4.417 0-8-3.584-8-7.998V50h-7.002C22.58 50 19 46.42 19 42c0-4.417 3.584-8 7.998-8H34v-7.002C34 22.58 37.58 19 42 19c4.417 0 8 3.584 8 7.998V34h7.002C61.42 34 65 37.58 65 42c0 4.417-3.584 8-7.998 8H50z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-gold-2 {
+    /* background-color: transparent; */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='152' height='152' viewBox='0 0 152 152'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='temple' fill='%23cebd9d' fill-opacity='0.2'%3E%3Cpath d='M152 150v2H0v-2h28v-8H8v-20H0v-2h8V80h42v20h20v42H30v8h90v-8H80v-42h20V80h42v40h8V30h-8v40h-42V50H80V8h40V0h2v8h20v20h8V0h2v150zm-2 0v-28h-8v20h-20v8h28zM82 30v18h18V30H82zm20 18h20v20h18V30h-20V10H82v18h20v20zm0 2v18h18V50h-18zm20-22h18V10h-18v18zm-54 92v-18H50v18h18zm-20-18H28V82H10v38h20v20h38v-18H48v-20zm0-2V82H30v18h18zm-20 22H10v18h18v-18zm54 0v18h38v-20h20V82h-18v20h-20v20H82zm18-20H82v18h18v-18zm2-2h18V82h-18v18zm20 40v-18h18v18h-18zM30 0h-2v8H8v20H0v2h8v40h42V50h20V8H30V0zm20 48h18V30H50v18zm18-20H48v20H28v20H10V30h20V10h38v18zM30 50h18v18H30V50zm-2-40H10v18h18V10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}

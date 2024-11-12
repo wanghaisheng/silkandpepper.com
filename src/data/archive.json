@@ -1,0 +1,19 @@
+{
+    "icon": "bi-pen",
+    "title": "Content",
+    "content": "At Prince Collection, we’re focused on premium luxury travel content. Whether you are interested in the latest in luxury travel, finding inspiration for your next trip, or getting in-depth information on hotel programs and our premier brands and vendors, Prince Collection has covered it.",
+    "link": [
+        {
+            "button": "news",
+            "url": "/news"
+        },
+        {
+            "button": "reviews",
+            "url": "/reviews"
+        },
+        {
+            "button": "guides",
+            "url": "/guides"
+        }
+    ]
+}

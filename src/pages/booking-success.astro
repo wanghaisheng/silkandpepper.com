@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Prince Collection | Success" description="Thank you for subscribing to the Prince Collection newsletter. Please check your email to confirm your subscription!">
+    <div class="container-fluid px-0 bg-dark">
+        <div class="row min-vh-100 p-5 bg-gold-2">
+            <div class="col-lg-8 offset-lg-2 d-flex flex-column justify-content-center align-items-center text-center p-5">
+                <div class="p-5 d-flex flex-column justify-content-center align-items-center text-center text-light">
+                    <span class="badge rounded-pill fw-bold text-pc-light bg-pc-dark py-2 px-3">Success!</span>
+                    <h2 class="display-1 mt-3 mb-2 lh-1">Thank you for your <span class="text-pc">booking inquiry!</span></h2>
+                    <p class="fs-4 fw-bold mb-3">A member of our travel team will review your submission and get back to you as soon as possible!</p> 
+                    <div class="d-flex pt-3">
+                        <button onclick="history.back()" class="btn btn-light bg-pc-dark text-pc-light fw-bold rounded-3 border-0 px-4 me-1">Back</button>
+                        <a href="/">
+                            <button class="btn btn-light bg-pc-dark text-pc-light fw-bold rounded-3 border-0 px-4">Home</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<!-- <script>
+    window.addEventListener('popstate', function(event) {
+    // The popstate event is fired each time when the current history entry changes.
+
+    var r = confirm("You pressed a Back button! Are you sure?!");
+
+    if (r == true) {
+        // Call Back button programmatically as per user confirmation.
+        history.back();
+        // Uncomment below line to redirect to the previous page instead.
+        // window.location = document.referrer // Note: IE11 is not supporting this.
+    } else {
+        // Stay on the current page.
+        history.pushState(null, null, window.location.pathname);
+    }
+
+    history.pushState(null, null, window.location.pathname);
+
+}, false);
+</script> -->

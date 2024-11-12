@@ -1,0 +1,73 @@
+---
+const { inputID, btnID, newsletterClass, newsletterBtn } = Astro.props;
+
+if (Astro.request.method === "POST") {
+
+  async function formSubmit() {
+  try {
+    const data = await Astro.request.formData();
+    const email = data.get("email");
+  
+    const response = await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=Rsd4T6', {
+      method: 'POST',
+  headers: {revision: '2024-02-15', 'content-type': 'application/json'},
+  body: JSON.stringify({
+    data: {
+      type: 'subscription',
+      attributes: {
+        custom_source: 'Prince Collection newsletter signup form',
+        profile: {
+          data: {
+            type: 'profile',
+            id: '01GDDKASAP8TKDDA2GRZDSVP4H',
+            attributes: {
+              email: email,
+              phone_number: '+15005550006',
+              external_id: '63f64a2b-c6bf-40c7-b81f-bed08162edbe',
+              anonymous_id: '01GDDKASAP8TKDDA2GRZDSVP4H',
+              _kx: 'J8fjcn003Wy6b-3ILNlOyZXabW6dcFwTyeuxrowMers%3D.McN66',
+              first_name: 'Sarah',
+              last_name: 'Mason',
+              organization: 'Example Corporation',
+              title: 'Regional Manager',
+              image: 'https://images.pexels.com/photos/3760854/pexels-photo-3760854.jpeg',
+              location: {
+                address1: '89 E 42nd St',
+                address2: '1st floor',
+                city: 'New York',
+                country: 'United States',
+                region: 'NY',
+                zip: '10017',
+                timezone: 'America/New_York',
+                ip: '127.0.0.1'
+              },
+              properties: {newKey: 'New Value'}
+            },
+            meta: {
+              patch_properties: {append: {newKey: 'New Value'}, unappend: {newKey: 'New Value'}, unset: 'skus'}
+            }
+          }
+        }
+      },
+      relationships: {list: {data: {type: 'list', id: 'WJRt59'}}}
+    }
+  })
+    });
+    console.log('status code: ', response.status); // 👉️ 200
+    const json = await response.json();
+    console.log(json);
+  } catch (error) {
+    console.log(error);
+  }
+}
+formSubmit();
+}
+
+---
+<form method="POST" id="fetchForm" class="w-100">
+    <div class="input-group my-2 px-0">
+      <input id={inputID} type="email" name="email" class:list={["newsletter-input form-control rounded-start-2", newsletterClass]} placeholder="name@example.com" aria-label="Sign up for our newsletter" aria-describedby="A form to subscribe to Prince Collection newsletter" required>
+      <button id={btnID} class:list={["btn rounded-0 fw-bold rounded-end-2", newsletterBtn]}
+      >I'm in!</button>
+    </div>
+</form>

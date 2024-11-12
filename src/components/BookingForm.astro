@@ -1,0 +1,436 @@
+---
+const { bookingContainer, bookingForm } = Astro.props;
+---
+
+<div class="zf-templateWidth">
+<form action='https://forms.zohopublic.com/princecollection/form/TAHotel/formperma/GhHmxXMGaCY-zcpfvo5m6Vy7eDp2DgGv1Yp_y23gRLo/htmlRecords/submit' name='form' method='POST' onSubmit='javascript:document.charset="UTF-8"; return zf_ValidateAndSubmit();' accept-charset='UTF-8' enctype='multipart/form-data' id='form'>
+    <input type="hidden" name="zf_referrer_name" value="">
+    <!-- To Track referrals , place the referrer name within the " " in the above hidden input field -->
+    <input type="hidden" name="zf_redirect_url" value="">
+    <!-- To redirect to a specific page after record submission , place the respective url within the " " in the above hidden input field -->
+    <input type="hidden" name="zc_gad" value="">
+    <!-- If GCLID is enabled in Zoho CRM Integration, click details of AdWords Ads will be pushed to Zoho CRM -->
+    <input type="hidden" name="utm_source" value="" />
+    <input type="hidden" name="utm_medium" value="" />
+    <input type="hidden" name="utm_campaign" value="" />
+    <input type="hidden" name="utm_term" value="" />
+    <input type="hidden" name="utm_content" value="" />
+    <input type="hidden" name="gclid" value="" />
+    <input type="hidden" name="referrername" value="" />
+    <div class="zf-templateWrapper">
+      <!---------template Header Starts Here---------->
+      <!-- <ul class="zf-tempHeadBdr">
+        <li class="zf-tempHeadContBdr">
+          <h2 class="zf-frmTitle">
+            <em>Prince Collection</em>
+          </h2>
+          <p class="zf-frmDesc"></p>
+          <div class="zf-clearBoth"></div>
+        </li>
+      </ul> -->
+      <!---------template Header Ends Here---------->
+
+      <!---------template Container Starts Here---------->
+      <div class:list={["zf-subContWrap zf-topAlign container-fluid", bookingContainer]}]>
+        <!-- <div class="row"> -->
+        <ul class:list={["row list-unstyled g-4 p-4 rounded-3", bookingForm]}>
+          <!---------Single Line Starts Here---------->
+          <!-- <div class="col-lg-4"> -->
+            <li class="zf-tempFrmWrapper zf-small col-lg-3">
+                <label class="zf-labelName"> First Name <em class="zf-important">*</em>
+                </label>
+                <div class="zf-tempContDiv">
+                <span>
+                    <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine1" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="">
+
+
+                    <!-- <input class="w-100 py-1 border border-secondary rounded-2" type="text" name="SingleLine1" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" /> -->
+                </span>
+                <p id="SingleLine1_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+                </div>
+                <div class="zf-clearBoth"></div>
+            </li>
+          <!-- </div> -->
+          <!---------Single Line Ends Here---------->
+          <!---------Single Line Starts Here---------->
+          <li class="col-lg-3">
+            <label class="zf-labelName"> Last Name <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" />
+              </span>
+              <p id="SingleLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+
+          <!---------Single Line Ends Here---------->
+          <!---------Email Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-lg-3">
+            <label class="zf-labelName"> Email <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" fieldType=9 type="text" maxlength="255" name="Email" checktype="c5" value="" placeholder=""> 
+                
+                <!-- <input class="w-100 border border-secondary rounded-2" fieldType=9 type="text" maxlength="255" name="Email" checktype="c5" value="" placeholder="" /> -->
+              </span>
+              <p id="Email_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Email Ends Here---------->
+
+          <!---------Single Line Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-lg-3">
+            <label class="zf-labelName"> Destination City <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine2" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="">
+
+                <!-- <input type="text" name="SingleLine2" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" /> -->
+              </span>
+              <p id="SingleLine2_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Single Line Ends Here---------->
+
+          <!---------Date Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-date col-lg-6">
+            <label class="zf-labelName"> Check-in Date <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="Date" checktype="c4" value="" maxlength="25" placeholder="DD-MMM-YYYY" >
+<!-- 
+                <input type="text" name="Date" checktype="c4" value="" maxlength="25" placeholder="" /> -->
+                <!-- <label>DD-MMM-YYYY</label> -->
+              </span>
+              <div class="zf-clearBoth"></div>
+              <p id="Date_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Date Ends Here---------->
+
+          <!---------Date Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-date col-lg-6">
+            <label class="zf-labelName"> Check-out Date <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="Date1" checktype="c4" value="" maxlength="25" placeholder="DD-MMM-YYYY">
+
+                <!-- <input type="text" name="Date1" checktype="c4" value="" maxlength="25" placeholder="" /> -->
+                <!-- <label>DD-MMM-YYYY</label> -->
+              </span>
+              <div class="zf-clearBoth"></div>
+              <p id="Date1_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Date Ends Here---------->
+
+          <!---------Single Line Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-lg-6">
+            <label class="zf-labelName"> How many rooms do you need? Do you have a preference for room/suite type? <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine3" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="">
+
+                <!-- <input type="text" name="SingleLine3" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" /> -->
+              </span>
+              <p id="SingleLine3_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Single Line Ends Here---------->
+
+          <!---------Single Line Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-lg-6">
+            <label class="zf-labelName"> How many beds do you need? Do you have a preference for bed configuration? <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine9" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="">
+
+                <!-- <input type="text" name="SingleLine9" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" /> -->
+              </span>
+              <p id="SingleLine9_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Single Line Ends Here---------->
+          <!---------Single Line Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-lg-3">
+            <label class="zf-labelName"> How many adults are travelling? <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine4" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="">
+                
+                <!-- <input type="text" name="SingleLine4" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" /> -->
+              </span>
+              <p id="SingleLine4_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Single Line Ends Here---------->
+
+          <!---------Single Line Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-lg-3">
+            <label class="zf-labelName"> How many children? </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine5" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="">
+
+                <!-- <input type="text" name="SingleLine5" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" /> -->
+              </span>
+              <p id="SingleLine5_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Single Line Ends Here---------->
+
+          <!---------Single Line Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-lg-3">
+            <label class="zf-labelName"> Children's ages </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine6" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="">
+
+                <!-- <input type="text" name="SingleLine6" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" /> -->
+              </span>
+              <p id="SingleLine6_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Single Line Ends Here---------->
+
+          <!---------Radio Starts Here---------->
+          <!-- <li class="zf-radio zf-tempFrmWrapper zf-oneColumns col-lg-3">
+            <label class="zf-labelName">What is your approximate price range per night (USD)? <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <div class="zf-overflow">
+                <span class="zf-multiAttType">
+                  <input class="zf-radioBtnType" type="radio" id="Dropdown1_1" name="Dropdown1" checktype="c1" value="Under&#x20;&#x24;250">
+                  <label for="Dropdown1_1" class="zf-radioChoice">-250</label>
+                  <label for="Dropdown1_1" class="zf-radioChoice">Under&#x20;&#x24;250</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-radioBtnType" type="radio" id="Dropdown1_2" name="Dropdown1" checktype="c1" value="&#x24;250&ndash;500">
+                  <label for="Dropdown1_2" class="zf-radioChoice">&#x24;250&ndash;500</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-radioBtnType" type="radio" id="Dropdown1_3" name="Dropdown1" checktype="c1" value="&#x24;500&ndash;750">
+                  <label for="Dropdown1_3" class="zf-radioChoice">&#x24;500&ndash;750</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-radioBtnType" type="radio" id="Dropdown1_4" name="Dropdown1" checktype="c1" value="&#x24;750&#x2b;">
+                  <label for="Dropdown1_4" class="zf-radioChoice">&#x24;750&#x2b;</label>
+                </span>
+                <div class="zf-clearBoth"></div>
+              </div>
+              <p id="Dropdown1_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li> -->
+          <!---------Radio Ends Here---------->
+
+          <!---------Single Line Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-lg-3">
+            <label class="zf-labelName"> Is there a specific hotel you'd like to book? </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine8" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="">
+
+                <!-- <input type="text" name="SingleLine8" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" /> -->
+              </span>
+              <p id="SingleLine8_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Single Line Ends Here---------->
+
+          <!---------Checkbox Starts Here---------->
+          <li class="zf-checkbox zf-tempFrmWrapper zf-twoColumns">
+            <label class="zf-labelName">Are you interested in booking with any of the following luxury hotel brands? <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+              <div class="zf-overflow">
+                <span class="zf-multiAttType">
+
+                    <!-- <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="Checkbox_1" name="Checkbox" checktype="c1" value="BVLGARI,&#x20;EDITION,&#x20;Luxury&#x20;Collection,&#x20;Ritz-Carlton,&#x20;Ritz-Carlton&#x20;Reserve,&#x20;St.&#x20;Regis">
+                        <label class="form-check-label" for="Checkbox_1">
+                            BVLGARI,&#x20;EDITION,&#x20;Luxury&#x20;Collection,&#x20;Ritz-Carlton,&#x20;Ritz-Carlton&#x20;Reserve,&#x20;St.&#x20;Regis
+                        </label>
+                    </div> -->
+
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_1" name="Checkbox" checktype="c1" value="BVLGARI,&#x20;EDITION,&#x20;Luxury&#x20;Collection,&#x20;Ritz-Carlton,&#x20;Ritz-Carlton&#x20;Reserve,&#x20;St.&#x20;Regis" />
+                  <label for="Checkbox_1" class="zf-checkChoice">BVLGARI,&#x20;EDITION,&#x20;Luxury&#x20;Collection,&#x20;Ritz-Carlton,&#x20;Ritz-Carlton&#x20;Reserve,&#x20;St.&#x20;Regis</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_2" name="Checkbox" checktype="c1" value="Autograph&#x20;Collection,&#x20;JW&#x20;Marriott,&#x20;Le&#x20;M&eacute;ridien,&#x20;Marriott,&#x20;Renaissance,&#x20;Tribute&#x20;Portfolio,&#x20;W&#x20;Hotels,&#x20;Westin" />
+                  <label for="Checkbox_2" class="zf-checkChoice">Autograph&#x20;Collection,&#x20;JW&#x20;Marriott,&#x20;Le&#x20;M&eacute;ridien,&#x20;Marriott,&#x20;Renaissance,&#x20;Tribute&#x20;Portfolio,&#x20;W&#x20;Hotels,&#x20;Westin</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_3" name="Checkbox" checktype="c1" value="Conrad,&#x20;LXR,&#x20;Waldorf&#x20;Astoria" />
+                  <label for="Checkbox_3" class="zf-checkChoice">Conrad,&#x20;LXR,&#x20;Waldorf&#x20;Astoria</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_4" name="Checkbox" checktype="c1" value="Andaz,&#x20;Miraval,&#x20;Park&#x20;Hyatt,&#x20;Alila,&#x20;Grand&#x20;Hyatt,&#x20;Hyatt&#x20;Regency,&#x20;Centric,&#x20;Zilara,&#x20;Ziva,&#x20;JdV,&#x20;Thompson,&#x20;Unbound&#x20;Collection" />
+                  <label for="Checkbox_4" class="zf-checkChoice">Andaz,&#x20;Miraval,&#x20;Park&#x20;Hyatt,&#x20;Alila,&#x20;Grand&#x20;Hyatt,&#x20;Hyatt&#x20;Regency,&#x20;Centric,&#x20;Zilara,&#x20;Ziva,&#x20;JdV,&#x20;Thompson,&#x20;Unbound&#x20;Collection</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_5" name="Checkbox" checktype="c1" value="Fairmont,&#x20;MGallery,&#x20;Pullman,&#x20;Raffles,&#x20;SLS,&#x20;Sofitel,&#x20;Swissotel" />
+                  <label for="Checkbox_5" class="zf-checkChoice">Fairmont,&#x20;MGallery,&#x20;Pullman,&#x20;Raffles,&#x20;SLS,&#x20;Sofitel,&#x20;Swissotel</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_6" name="Checkbox" checktype="c1" value="Hotel&#x20;Indigo,&#x20;InterContinental,&#x20;Kimpton,&#x20;Regent,&#x20;Six&#x20;Senses" />
+                  <label for="Checkbox_6" class="zf-checkChoice">Hotel&#x20;Indigo,&#x20;InterContinental,&#x20;Kimpton,&#x20;Regent,&#x20;Six&#x20;Senses</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_7" name="Checkbox" checktype="c1" value="Four&#x20;Seasons" />
+                  <label for="Checkbox_7" class="zf-checkChoice">Four&#x20;Seasons</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_8" name="Checkbox" checktype="c1" value="Mandarin&#x20;Oriental" />
+                  <label for="Checkbox_8" class="zf-checkChoice">Mandarin&#x20;Oriental</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_9" name="Checkbox" checktype="c1" value="Rosewood" />
+                  <label for="Checkbox_9" class="zf-checkChoice">Rosewood</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_10" name="Checkbox" checktype="c1" value="Shangri-La" />
+                  <label for="Checkbox_10" class="zf-checkChoice">Shangri-La</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_11" name="Checkbox" checktype="c1" value="Small&#x20;Luxury&#x20;Hotels&#x20;of&#x20;the&#x20;World" />
+                  <label for="Checkbox_11" class="zf-checkChoice">Small&#x20;Luxury&#x20;Hotels&#x20;of&#x20;the&#x20;World</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_12" name="Checkbox" checktype="c1" value="Belmond" />
+                  <label for="Checkbox_12" class="zf-checkChoice">Belmond</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_13" name="Checkbox" checktype="c1" value="Dorchester&#x20;Collection" />
+                  <label for="Checkbox_13" class="zf-checkChoice">Dorchester&#x20;Collection</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_14" name="Checkbox" checktype="c1" value="Rocco&#x20;Forte" />
+                  <label for="Checkbox_14" class="zf-checkChoice">Rocco&#x20;Forte</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_15" name="Checkbox" checktype="c1" value="Peninsula" />
+                  <label for="Checkbox_15" class="zf-checkChoice">Peninsula</label>
+                </span>
+                <span class="zf-multiAttType">
+                  <input class="zf-checkBoxType" type="checkbox" id="Checkbox_16" name="Checkbox" checktype="c1" value="Independent&#x20;Hotels" />
+                  <label for="Checkbox_16" class="zf-checkChoice">Independent&#x20;Hotels</label>
+                </span>
+                <div class="zf-clearBoth"></div>
+              </div>
+              <p id="Checkbox_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Checkbox Ends Here---------->
+
+          <!---------Single Line Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-md-6 col-lg-6">
+            <label class="zf-labelName"> Do you have elite status with any hotel chains? If so, which? </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <input type="text" class="form-control w-100" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="SingleLine7" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="">
+
+                <!-- <input type="text" name="SingleLine7" checktype="c1" value="" maxlength="255" fieldType=1 placeholder="" /> -->
+              </span>
+              <p id="SingleLine7_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Single Line Ends Here---------->
+          <!---------Dropdown Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-md-6 col-lg-6">
+            <label class="zf-labelName"> What currency would you like to be quoted in? <em class="zf-important">*</em>
+            </label>
+            <div class="zf-tempContDiv">
+
+                <select class="form-select mb-3" aria-label="Large select example" checktype="c1">
+                    <!-- <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option> -->
+
+                    <option selected>-Select-</option>
+                    <option value="CAD" selected>CAD</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="Local&#x20;Currency">Local Currency</option>
+                </select>
+<!-- 
+              <select class="zf-form-sBox" name="Dropdown" checktype="c1">
+                <option selected="true" value="-Select-">-Select-</option>
+                <option value="CAD" selected>CAD</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="Local&#x20;Currency">Local Currency</option>
+              </select> -->
+
+              <p id="Dropdown_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+          <!---------Dropdown Ends Here---------->
+
+          <!---------Multiple Line Starts Here---------->
+          <li class="zf-tempFrmWrapper zf-small col-lg-12">
+            <label class="zf-labelName"> Additional Requests </label>
+            <div class="zf-tempContDiv">
+              <span>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="MultiLine" checktype="c1" maxlength="65535" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Comments</label>
+                </div>
+
+                <!-- <textarea name="MultiLine" checktype="c1" maxlength="65535" placeholder=""></textarea> -->
+              </span>
+              <p id="MultiLine_error" class="zf-errorMessage" style="display:none;">Invalid value</p>
+            </div>
+            <div class="zf-clearBoth"></div>
+          </li>
+
+          <li>
+            <button class="btn btn-dark">Submit</button>
+          </li>
+          <!---------Multiple Line Ends Here---------->
+        </ul>
+
+        <!-- </div> -->
+      </div><!-- end container-->
+      <!---------template Container Starts Here---------->
+      <!-- Submit button -->
+      <!-- <ul>
+        <li class="zf-fmFooter">
+          <button class="zf-submitColor">Submit</button>
+        </li>
+      </ul> -->
+    </div>
+    <!-- 'zf-templateWrapper' ends -->
+  </form>
+</div>
+<!-- 'zf-templateWidth' ends -->
+<script type="text/javascript">
+  var zf_DateRegex = new RegExp("^(([0][1-9])|([1-2][0-9])|([3][0-1]))[-](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)[-](?:(?:19|20)[0-9]{2})$");
+  var zf_MandArray = ["SingleLine1", "SingleLine", "Email", "SingleLine2", "Date", "Date1", "SingleLine3", "SingleLine9", "SingleLine4", "Dropdown1", "Checkbox", "Dropdown"];
+  var zf_FieldArray = ["SingleLine1", "SingleLine", "Email", "SingleLine2", "Date", "Date1", "SingleLine3", "SingleLine9", "SingleLine4", "SingleLine5", "SingleLine6", "Dropdown1", "SingleLine8", "Checkbox", "SingleLine7", "Dropdown", "MultiLine"];
+  var isSalesIQIntegrationEnabled = false;
+  var salesIQFieldsArray = [];
+</script>

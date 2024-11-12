@@ -1,0 +1,41 @@
+{
+    "faq": [
+        {
+            "title": "Do you charge any booking fees?",
+            "content": [ 
+                "No! We charge no additional fees for handling bookings. You’ll pay the same price as the best flexible rate offered by the hotel, all while enjoying extra benefits.",
+                "The fee structure is subject to change."
+            ]
+        },
+        {
+            "title": "How are you able to offer these additional benefits?",
+            "content": [
+                "Luxury hotel groups offer these additional benefits and promotions to clients of the world’s leading travel agencies in order to capture significant volumes of guest spending through these agencies."
+            ]
+        },
+        {
+            "title": "What rates will I pay when booking with Prince Collection?",
+            "content": [
+                "In most cases, you’ll pay the same rate as the best flexible (i.e., fully refundable) rate offered directly by the hotel.",
+                "These rates may be higher than member-exclusive rates, prepaid rates, corporate rates, or other specific rate types outside of the best flexible rate, so you’ll want to weigh up the difference in rates against the additional benefits you receive.",
+                "In some cases, such as during property-specific 3rd/4th/5th Night Free promotions, booking with Prince Collection can result in paying lower effective rates compared to the best publicly available rate."
+            ]
+        },
+        {
+            "title": "Will I get elite status benefits, points, and qualifying nights?",
+            "content": [
+                "Yes! The benefits you receive when booking hotels with Prince Collection are in addition to the benefits you’d get as an elite member of a hotel loyalty program.",
+                "Furthermore, Prince Collection bookings are eligible to earn points and qualifying nights within hotel elite status programs, helping you get closer to your next points redemption or a higher elite tier."
+            ]
+        },
+        {
+            "title": "Will I get elite status benefits, points, and qualifying nights?",
+            "content": [
+                "Submit an inquiry via the booking form to get started.",
+                "Our travel advisors will work with you to identify the best property for your needs and help you understand the benefits you’ll receive.",
+                "When you’re ready to book, we will collect your credit card information via a PCI-compliant submission process and pass it along to the property to guarantee your booking.",
+                "After your booking is confirmed, we will communicate with the hotel on your behalf with respect to room preferences, upgrade requests, special occasions, etc., to ensure you have the best possible experience during your stay."
+            ]
+        }
+    ]
+}

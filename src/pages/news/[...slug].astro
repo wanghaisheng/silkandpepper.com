@@ -1,0 +1,305 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
+
+export const prerender = true;
+export async function getStaticPaths() {
+  const newsEntries = await getCollection('news');
+  return newsEntries.map(post => ({
+    params: { slug: post.slug }, props: { post },
+  }));
+}
+
+const allPosts = await getCollection("news");
+let filteredPosts = allPosts.filter(post => post.data.draft === false)
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Remove space, add hyphens to titles, convert to lowerCase to be used for hyperlinks
+function tableOfContents(str) {
+    // Convert the string to lowercase
+    let lowercaseStr = str.toLowerCase();
+    // Replace spaces with hyphens
+    let hyphenatedStr = lowercaseStr.replace(/ /g, '-');
+    return hyphenatedStr;
+}
+
+// get read time
+function wordCount(str) {
+  const words = str.match(/(\w+)/g).length;
+  const readMins = Math.trunc(words / 250);
+  return readMins;
+}
+
+// share
+// fb share btn
+function fbShare() {
+  const fbShare = "https://www.facebook.com/sharer/sharer.php?u=";
+  const url = `https://princecollection.com${Astro.url.pathname}`;
+  const shareButton = fbShare + url;
+  return shareButton;
+}
+
+// twitter/X share btn
+function tweetCurrentPage(title) {
+  const twShare = "https://twitter.com/share?url=";
+  const url = encodeURIComponent(`https://princecollection.com${Astro.url.pathname}`);
+  const twShareButton = twShare + url + '&text=' + title;
+  return twShareButton;
+}
+
+// email page
+function emailPage(title) {
+  const href = "mailto:?";
+  const url = encodeURIComponent(Astro.url.pathname);
+  const emailShare = href + 'subject=' +  title + '&body=' + 'Check out this great article I found from princecollection.com: ' + url;
+  return emailShare;
+}
+const url = encodeURIComponent(Astro.url.pathname);
+
+const { index } = Astro.props
+const slideAnim = {
+  old: {
+    name: 'slideDown',
+    duration: '0.7s',
+    easing: 'linear',
+    fillMode: 'forwards',
+  },
+  new: {
+    name: 'slideUp',
+    duration: '0.7s',
+    delay: `${index * 0.2 + 0.1}s`,
+    easing: 'ease-in-out',
+    fillMode: 'backwards',
+  },
+}
+const verticalSlide = {
+  forwards: slideAnim,
+  backwards: slideAnim,
+}
+
+// reduce length of post description to closest full word
+function shorten(text, max) {
+  return text && text.length > max ? text.slice(0, max).split(' ').slice(0, -1).join(' ') : text
+}
+---
+
+<Layout title={post.data.title} description={post.data.description} image={post.data.imageUrl}>
+    <div class="container-fluid px-0 pt-3">
+        <div class="row min-vh-500 bg-gold-2 pt-5">
+            <div class="col-lg-9 d-flex flex-column justify-content-end align-items-start text-start p-5">
+                <a href="/news">
+                    <div class="d-flex align-items-center" data-aos="fade-up">
+                        <i class="bi bi-arrow-left text-black-50 fs-1"></i>
+                        <h6 class="ms-2 my-0 text-black-50 fw-light">Back to news</h6>
+                    </div>
+                </a>
+                <h1 class="font-windsong text-secondary fw-bold my-3" style="font-size: 12vmin;" data-aos="fade-up" data-aos-delay="200">{post.data.title}</h1>
+                <p class="fs-5 col-md-7 text-body-secondary mb-3 mt-3" data-aos="fade-up" data-aos-delay="400">{post.data.description}</p>
+                <div data-aos="fade-up" data-aos-delay="600">
+                    <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">Written by</span> {post.data.author}</p>
+                    <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">On</span> {post.data.pubDate.toString().slice(0,10)}</p>
+                    <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">Read time </span>  {wordCount(post.body)} mins</p>
+                </div>
+            </div>
+
+            { post.data.carousel == undefined || post.data.carousel == '' ?
+             
+            <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center pt-5">
+                <img class="w-100 object-fit" style="height: 500px" src={post.data.imageUrl} alt={post.data.imageAlt} />
+            </div>
+            
+            :
+            
+            <div class="col-lg-12 d-flex flex-column justify-content-center align-items-center pt-5 px-0">
+                <div id="carouselExampleIndicators" class="carousel slide"  data-bs-ride="true">
+                    <div class="carousel-indicators">
+                        {post.data.carousel.map((item, index) => (
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={index} class={index === 0 ? 'active' : ''} aria-current="true" aria-label={'Slide ' + index+1}>
+                            <i class="bi bi-dot fs-1"></i>
+                            </button>
+                        ))}
+                    </div>
+                    <div class="carousel-inner object-fit h-100">
+                    {post.data.carousel.map((item, index) => (
+                        <div style="height: 600px"
+                        class:list={["carousel-item min-vw-100", index === 0 ? 'active' : '']}>
+                            <img src={item.url} class="d-block w-100 h-100 object-fit" alt={post.data.SEOdescription}>
+                      </div>
+                    ))}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <i class="bi bi-arrow-left-circle-fill display-2 opacity-100"  aria-hidden="true"></i>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <i class="bi bi-arrow-right-circle-fill display-2 opacity-100" aria-hidden="true"></i>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+    <!-- body -->
+    <div class="container w-100 mx-auto">
+        <div id="content" class="row p-4">
+            <!-- sidebar -->
+            <div class="d-none d-xl-flex flex-column col-lg-2 col-lg-3 pt-5">
+                <div class="d-flex justify-content center-align-items-center">
+                    {
+                        post.data.tags.map((tag) =>(
+                        <span class="badge bg-pc-10 text-pc-dark me-1 mb-2">#{tag}</span>
+                        ))
+                    }
+                </div>
+                <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">Written by</span> {post.data.author}</p>
+                <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">On</span> {post.data.pubDate.toString().slice(0,10)}</p>
+                <p class="small text-pc-dark text-uppercase fw-bold my-0"><span class="fw-light text-secondary">Read time </span>  {wordCount(post.body)} mins</p>
+                <hr>
+                <p><span class="fw-bold text-pc-dark">Prince Collection</span> is a non-traditional, full service travel concierge designed exclusively for companies and individuals who require exclusive travel arrangements. We handle the nuances of travel ensuring a seamless and extraordinary journey from start to finish.</p>
+                <hr>
+                <div>
+                    <h4 class="fs-5 fw-bold text-pc-dark">Newsletter</h4>
+                    <p>Join the Prince Collection newsletter to get weekly updates delivered straight to your inbox.</p>
+                    <div class="klaviyo-form-UGQNyX"></div>
+                </div>
+                <hr>
+                <div>
+                    <h4 class="fs-5 fw-bold text-pc-dark">Book your travel</h4>
+                    <p>Let Prince Collection’s Travel Concierge handle your exclusive travel arrangements. Get started by filling out some basic info about your trip.</p>
+                    <a href="/book">
+                        <button class="btn btn-pc">Book now</button>
+                    </a>
+                </div>
+                <hr>
+                <h2 class="text-secondary mb-3">More posts</h2>
+                {
+                    filteredPosts.map((sidebarPost) => (
+                    sidebarPost.slug != post.slug &&
+                    <a href={`/news/${sidebarPost.slug}/`}>
+                        <div class="card text-body-secondary rounded-4 mb-3">
+                            <img src="" data-src={sidebarPost.data.imageUrl} class="card-img-top rounded-4 rounded-bottom-0 p-2" style="width: 100%; height: 150px; object-fit: cover" alt={post.data.imageAlt}>
+                            <div class="card-body px-4 pb-4 pt-3">
+                                <p class="small mb-2 mt-0">{sidebarPost.data.pubDate.toString().slice(0,10)}</p>
+                                <h5 class="card-title fs-4 fw-900 text-secondary">{sidebarPost.data.title}</h5>
+                                <p class="card-text my-3">{shorten(sidebarPost.data.description, 150) + '...'}</p>
+                                <p class="small m-0 text-secondary mt-2 mb-0">By: {sidebarPost.data.author}</p>
+                                <i class="bi bi-arrow-up-right-circle-fill text-secondary fs-1 position-absolute bottom-0 end-0 m-3"></i>
+                            </div>
+                        </div>
+                    </a>
+                    ))
+                }
+            </div>
+            <div class="content-body col-lg-12 col-xl-9 p-4 p-lg-5">
+                <!--table of contents check and loop-->
+                { post.data.contents &&
+                <details class="bg-body-secondary p-3 mb-4 rounded-3" style="transition: all .3s ease-in-out;">
+                    <summary class="fs-5 fw-bold text-black-50">What's in this post</summary>
+                    <div class="px-3 py-2">
+                        {post.data.contents.map((item) => (
+                        <a href={'#' +  tableOfContents(item)}>
+                            <p class="my-2" style="font-size: 17px"><i class="bi bi-diamond text-secondary fw-bold me-1"></i> {item}</p>
+                        </a>
+                        ))}
+                    </div>
+                </details>
+                }
+                <Content />
+                <!-- share -->
+                <div class="d-flex border-top py-3 mt-4">
+                    <h6 class="ms-2 my-0 text-black-50 fw-bold">Share this article</h6>
+                </div>
+                <div class="d-flex">
+                <a href={fbShare()} target="_blank">
+                    <button class="btn btn-light text-black-50 px-3 py-2 fw-900 fs-5 me-2" style="background: #d6d6d680;">
+                    <i class="bi bi-facebook fs-5"></i>
+                  </button>
+                </a>
+                <a href={tweetCurrentPage(post.title)} target="_blank">
+                  <button class="btn btn-light text-black-50 px-3 py-2 fw-900 fs-5 me-2" style="background: #d6d6d680;">
+                    <i class="bi bi-twitter-x fs-5"></i>
+                  </button>
+                </a>
+                <a href={emailPage(post.title)}>
+                  <button class="btn btn-light text-black-50 px-3 py-2 fw-900 fs-5 me-2" style="background: #d6d6d680;">
+                    <i class="bi bi-envelope fs-5"></i>
+                  </button>
+                </a>
+                <button class="btn btn-light text-black-50 px-3 py-2 fw-900 fs-5 me-2" style="background: #d6d6d680;" type="button" id="liveToastBtn">
+                    <i class="bi bi-link-45deg fs-5"></i>
+                </button>
+                <div class="toast-container position-fixed top-50 start-50 translate-middle p-3">
+                    <div id="liveToast" class="toast text-bg-light border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="1500">
+                        <div class="toast-body p-2 d-flex align-items-center text-secondary">
+                            <i class="bi bi-check-circle-fill text-success fs-5"></i> <p class="ms-2 my-0">Copied to clipboard!</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-12 d-block d-xl-none border-top p-4">
+                <div class="py-2">
+                <p><span class="fw-bold text-pc-dark">Prince Collection</span> is a non-traditional, full service travel concierge designed exclusively for companies and individuals who require exclusive travel arrangements. We handle the nuances of travel ensuring a seamless and extraordinary journey from start to finish.</p>
+                </div>
+                <hr>
+                <div class="py-2">
+                    <h4 class="fs-5 fw-bold text-pc-dark">Newsletter</h4>
+                    <p>Join the Prince Collection newsletter to get weekly updates delivered straight to your inbox.</p>
+                    <div class="klaviyo-form-UGQNyX"></div>
+                </div>
+                <hr>
+                <div class="py-2">
+                    <h4 class="fs-5 fw-bold text-pc-dark">Book your travel</h4>
+                    <p>Let Prince Collection’s Travel Concierge handle your exclusive travel arrangements. Get started by filling out some basic info about your trip.</p>
+                    <a href="/book">
+                        <button class="btn btn-pc">Book now</button>
+                    </a>
+                </div>
+                <hr>
+                <div class="container-fluid">
+                    <h2 class="text-secondary">More posts</h2>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 px-0 py-2">
+                        {
+                            filteredPosts.map((sidebarPost) => (
+                            sidebarPost.slug != post.slug &&
+                            <a href={`/news/${sidebarPost.slug}/`}>
+                                <div class="col">
+                                    <div class="card text-body-secondary rounded-4 mb-3">
+                                        <img src="" data-src={sidebarPost.data.imageUrl} class="card-img-top rounded-4 rounded-bottom-0 p-2" style="width: 100%; height: 150px; object-fit: cover" alt={post.data.imageAlt}>
+                                        <div class="card-body px-4 pb-4 pt-3">
+                                            <p class="small mb-2 mt-0">{sidebarPost.data.pubDate.toString().slice(0,10)}</p>
+                                            <h5 class="card-title fs-4 fw-900 text-secondary">{sidebarPost.data.title}</h5>
+                                            <p class="card-text my-3">{shorten(sidebarPost.data.description, 150) + '...'}</p>
+                                            <p class="small m-0 text-secondary mt-2 mb-0">By: {sidebarPost.data.author}</p>
+                                            <i class="bi bi-arrow-up-right-circle-fill text-secondary fs-1 position-absolute bottom-0 end-0 m-3"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+// var targetParagraph = document.querySelector('#content .content-body p:nth-of-type(3)');
+// var dynamicContent = '<div id="custom-div" class="bg-primary text-light">Nostrud elit qui amet nisi nulla ea ullamco. Nulla aliqua aute et deserunt mollit et deserunt dolor duis Lorem nulla aliquip. Veniam sit voluptate velit quis dolor pariatur anim culpa reprehenderit irure qui sint. Veniam qui sunt proident velit incididunt tempor Lorem in sit laborum officia exercitation culpa dolor.</div>';
+// targetParagraph.insertAdjacentHTML('afterend', dynamicContent);
+<script>
+    const toastTrigger = document.getElementById('liveToastBtn');
+    const toastLiveExample = document.getElementById('liveToast');
+        if (toastTrigger) {
+        toastTrigger.addEventListener('click', () => {
+            const toast = new bootstrap.Toast(toastLiveExample)
+            toast.show();
+            navigator.clipboard.writeText("https://princecollection.com" + window.location.pathname);
+        })
+    }
+  </script>

@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import data from '../data/sitecontent.json';
+---
+
+<Layout title={data.about.meta.title} description={data.about.meta.description}>
+<div class="container-fluid px-0 pt-3 text-body-secondary bg-gold-1">
+	<div class="row min-vh-500 pt-3">
+		<div class="col-lg-12 d-flex flex-column justify-content-center align-items-center min-vh-500 text-center p-5 mb-0 mb-lg-4 mt-4 mt-lg-0 animate-in">
+			<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3">{data.about.hero.badge}</span>
+			<h1 class="display-3 fw-bold lh-1 mb-2 mt-3"><Fragment set:html={data.about.hero.title}/></h1>
+			<p class="col-lg-6 col-md-8 fs-5 text-body-secondary mt-3 mb-4">{data.about.hero.content}</p>
+			<a href="/book">
+				<button class="btn btn-pc fw-bold rounded-pill px-4 shadow">{data.about.hero.button}</button>
+			</a>
+		</div>
+	</div>
+
+	<!-- logos -->
+
+	<div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 p-5 bg-light" data-aos="fade-up">
+		{
+			data.about.logos.map((item, index) => (
+			<div class="col d-flex my-auto text-center p-3" style="filter: brightness(0);">
+				<img src="" data-src={item.url} style={index === 2 || index === 3 || index === 5 ? 'width: 120px' : 'width: 140px'} alt={item.alt} />
+			</div>
+		))}
+	</div>
+
+	
+
+	<div class="row g-3 p-5 pb-3 pb-lg-5">
+		<div class="col-lg-12 d-flex flex-column justify-content-center align-items-start align-items-lg-center text-start text-lg-center px-3 px-lg-5 pb-4 pb-lg-5">
+			<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3"data-aos="fade-up">{data.about.section2.badge}</span>
+			<h2 class="display-4 fw-bold lh-1 mb-2 mt-3"data-aos="fade-up" data-aos-delay="200">{data.about.section2.title}</h2>
+			<p class="text-body-secondary col-md-8 fs-5 my-3" data-aos="fade-up" data-aos-delay="400">{data.about.section2.content}</p>
+		</div>
+
+		{data.about.section2.list.map((item, index) => (
+			<div class="col-lg-6">
+				<div class="p-5 border rounded-4 bg-pc-dark text-light border shadow" style="min-height: 420px" data-aos="fade-up">
+					<i class:list={["bi text-pc-dark-10 fs-2 px-3 py-2 shadow rounded-3 bg-pc-dark-80", item.icon]} data-aos="fade-up" data-aos-delay={index * 200}></i>
+					<h4 class="fw-bold mb-3 mt-4" data-aos="fade-up" data-aos-delay={index * 400}>{item.title}</h4>
+					<p data-aos="fade-up" data-aos-delay={index * 600}>{item.content}</p>
+					{item.link.map((i) => (
+						<div class="d-none d-sm-inline-block" data-aos="fade-up" data-aos-delay={index * 800}>
+							<a href={i.url}>
+								<button class="btn btn-light rounded-3 text-pc-dark-10 bg-pc-dark-80 border-0 fw-bold px-3 shadow">{i.button}</button>
+							</a>
+						</div>
+						<div class="d-flex d-sm-none" data-aos="fade-up" data-aos-delay={index * 800}>
+						<a class="w-100" href={i.url}>
+							<button class="btn btn-light w-100 fw-bold rounded-3 text-pc-dark-10 bg-pc-dark-80 border-0 mb-2 px-3 shadow">{i.button}</button>
+						</a>
+						</div>
+					))}
+				</div>
+			</div>	
+		))}
+	</div>
+
+	<div class="row row-cols-1 row-cols-lg-2 bg-pc-light"data-aos="fade-up">
+		<div class="col d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start p-5">
+			<span class="badge rounded-pill fw-bold bg-pc-dark-80 text-light py-2 px-3" data-aos="fade-up">{data.about.section1.badge}</span>
+			<h2 class="display-4 fw-bold lh-1 mb-2 mt-4" data-aos="fade-up" data-aos-delay="200"><Fragment set:html={data.about.section1.title}/></h2>
+			<p class="text-body-secondary fs-5 my-3" data-aos="fade-up" data-aos-delay="400">{data.about.section1.content}</p>
+			<a href="/book">
+				<div class="d-flex">
+				{data.about.section1.buttons.map((item) => (
+					<button class="btn btn-light rounded-pill bg-pc-dark-60 border-0 text-pc-light px-4 me-2" data-aos="fade-up" data-aos-delay="600">
+						<a href={item.link}>{item.cta}</a>
+					</button>
+				 ))}
+				 </div>
+			</a>
+		</div>
+		<div class="col pt-0 pt-lg-5 pb-0 pb-lg-5 ps-0 ps-lg-5 pe-0" data-aos="fade-up" data-aos-delay="800">
+			<img class="w-100 h-100 object-fit min-vh-500 rounded-4 shadow" src="" data-src="/images/general/pc-about-infinity-pool-min.jpeg" style="aspect-ratio: 16/9" alt="An image of an infinity pool with ocean view"/>
+		</div>
+	</div>
+
+	<div class="row" data-aos="fade-up">
+		<div class="col-lg-12">
+			<div class="col-lg-12 p-0">
+				<img class="w-100 object-fit" style="aspect-ration: 16/9; height: 60vh;" src="" data-src="/images/general/pc-about-bedroom.avif" alt="Luxury hotel bedroom"/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row bg-pc-80 py-5 text-body-secondary" data-aos="fade-up">
+		<div class="col-lg-8 offset-lg-2 p-5 text-center">
+			<span class="badge rounded-pill fw-bold bg-pc-dark text-pc-light py-2 px-3" data-aos="fade-up">{data.home.newsletter_cta.badge}</span>
+			<h2 class="display-4 fw-bold lh-1" data-aos="fade-up" data-aos-delay="200"><Fragment set:html={data.home.newsletter_cta.title}/></h2>
+			<p class="fs-5 my-3 col-md-8 mx-auto" data-aos="fade-up" data-aos-delay="400">{data.home.newsletter_cta.content}</p>
+			<a href="/newsletter">
+				<button class="btn bg-pc-dark text-light rounded-pill px-4 shadow" data-aos="fade-up" data-aos-delay="600">{data.home.newsletter_cta.button}</button>
+			</a>
+		</div>
+	</div>
+</Layout>
